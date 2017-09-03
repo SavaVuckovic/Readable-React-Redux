@@ -9,22 +9,40 @@
 /* Custom CSS */
 
 
+
 /* Post */
 .post {
   box-shadow: 0 0 3px #777;
-  margin: 15px 0;
+  margin: 25px 0;
 }
 
 .post-header {
   background: #a30c0c;
   color: #fff;
   padding: 5px 15px;
+  position: relative;
 }
 
 .post-header p {
   margin: 0;
   font-weight: bold;
   font-size: 14px;
+}
+
+.edit-delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+}
+
+.edit-delete i {
+  margin: 0 5px;
+  font-size: 18px;
+}
+
+.edit-delete i:hover {
+  text-shadow: 0 0 7px yellow;
 }
 
 .post-body {
@@ -42,10 +60,14 @@
   margin: 0 5px;
 }
 
+.control i:hover {
+  color: #a30c0c;
+}
+
 /* Categories */
 .categories {
   box-shadow: 0 0 4px #777;
-  margin: 15px 0;
+  margin: 25px 0;
 }
 
 .categories-header {
