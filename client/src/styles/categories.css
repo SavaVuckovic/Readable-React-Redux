@@ -1,0 +1,26 @@
+.categories {
+  box-shadow: 0 0 4px #777;
+  margin: 25px 0;
+}
+
+.categories-header {
+  padding: 5px 10px;
+  text-align: center;
+  color: white;
+  background: #a30c0c;
+}
+
+.category-list {
+  list-style-type: none;
+  padding: 0;
+
+}
+
+.category {
+  text-align: center;
+  padding: 5px;
+}
+
+.category:hover {
+  background: #ddd;
+}
