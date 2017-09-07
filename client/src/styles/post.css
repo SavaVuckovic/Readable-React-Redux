@@ -1,18 +1,24 @@
+/* entire post */
 .post {
   box-shadow: 0 0 3px #777;
   margin: 25px 0;
 }
 
+/* post header */
 .post-header {
   background: #a30c0c;
   color: #fff;
-  padding: 5px 15px;
+  padding: 15px 15px 10px;
   position: relative;
 }
 
-.post-header p {
+.post-header h3 {
   margin: 0;
-  font-weight: bold;
+  cursor: pointer;
+}
+
+.post-header p {
+  margin: 5px 0;
   font-size: 14px;
 }
 
@@ -26,27 +32,61 @@
 .edit-delete i {
   margin: 0 5px;
   font-size: 18px;
+  cursor: pointer;
 }
 
 .edit-delete i:hover {
   text-shadow: 0 0 7px yellow;
 }
 
+/* post body */
 .post-body {
-  padding: 5px 0 0;
   padding: 15px;
 }
 
+/* post controlls */
 .post-controls {
-  font-size: 16px;
-  padding: 5px 15px;
+  padding: 10px 15px;
+  background: #eee;
 }
 
 .control {
   display: inline-block;
+  margin-right: 10px;
+}
+
+.control i {
   margin: 0 5px;
+  font-size: 17px;
+  cursor: pointer;
 }
 
 .control i:hover {
   color: #a30c0c;
+}
+
+.control span {
+  font-size: 14px;
+}
+
+.read-more {
+  float: right;
+  text-decoration: none;
+  font-weight: bold;
+  color: #a30c0c;
+}
+
+/* smaller screens */
+@media screen and (max-width: 765px) {
+  .post {
+    margin : 15px 0;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .read-more {
+    float: none;
+    display: block;
+    margin-top: 10px;
+  }
 }

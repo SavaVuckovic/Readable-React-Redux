@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../styles/App.css';
 import { Route, BrowserRouter } from 'react-router-dom';
 import PostList from './postlist';
-import Categories from './categories';
+import Aside from './aside';
 
 class App extends Component {
   render() {
@@ -13,7 +13,7 @@ class App extends Component {
           <Route exact path="/" render={() => (
             <div className="row">
               <PostList />
-              <Categories />
+              <Aside />
             </div>
           )} />
 

@@ -5,6 +5,7 @@ class Post extends Component {
   render() {
     return (
       <div className="post">
+
         <div className="post-header">
           <h3>Post Title</h3>
           <p>Posted by |Somebody| on |date|</p>
@@ -13,6 +14,7 @@ class Post extends Component {
             <i className="fa fa-trash" aria-hidden="true"></i>
           </div>
         </div>
+
         <div className="post-body">
           <p>Lorem ipsum dolor sit ncididunt ut labore et dolore magna aliqua.
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
@@ -20,6 +22,7 @@ class Post extends Component {
           <p>aecat cupidatat non proident, sunt in culpa qui officia deamet, consectetur adipis
             icing elit, sed do eiusmod tempor iserunt mollit anim id est laborum</p>
         </div>
+
         <div className="post-controls">
           <div className="control">
             <i className="fa fa-thumbs-up" aria-hidden="true"></i>
@@ -33,7 +36,10 @@ class Post extends Component {
             <i className="fa fa-comments" aria-hidden="true"></i>
             <span>5</span>
           </div>
+          <a className="read-more" href="#">read more</a>
+          <div className="clearfix"></div>
         </div>
+
       </div>
     );
   }
