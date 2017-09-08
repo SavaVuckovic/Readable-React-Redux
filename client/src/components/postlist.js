@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import Post from './post';
+import '../styles/post.css';
 
 class PostList extends Component {
   render() {
     return (
-      <div className="col-md-8">
+      <div className="postlist col-md-8">
 
         <Post />
         <Post />

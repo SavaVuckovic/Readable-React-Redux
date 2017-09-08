@@ -4,6 +4,7 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import PostList from './postlist';
 import Aside from './aside';
 import SinglePost from './singlepost';
+import AddPost from './addpost';
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
       <div className="App container">
         <BrowserRouter>
           <div>
+
             <Route exact path="/" render={() => (
               <div className="row">
                 <PostList />
@@ -18,7 +20,10 @@ class App extends Component {
               </div>
             )} />
 
-            <Route path="/post/test" component={SinglePost} />
+            <Route path="/posts/test" component={SinglePost} />
+
+            <Route path="/posts/add" component={AddPost} />
+
           </div>
         </BrowserRouter>
       </div>

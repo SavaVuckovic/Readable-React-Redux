@@ -1,0 +1,39 @@
+.add-post-form {
+  box-shadow: 0 0 4px #777;
+  margin-top: 20px;
+  padding: 20px;
+  text-align: center;
+  background: #eee;
+}
+
+.form-field {
+  display: block;
+  padding: 10px;
+  width: 100%;
+  margin: 10px 0;
+  border: 1px solid #bbb;
+}
+
+.category-select {
+  background: #fff;
+}
+
+.post-body-field {
+  max-width: 100%;
+  min-height: 150px;
+  border: 1px solid #bbb;
+}
+
+.add-post-form button {
+  padding: 5px 10px;
+  font-weight: bold;
+  border: none;
+  color: #fff;
+  background: #a30c0c;
+  font-size: 16px;
+  margin: auto;
+}
+
+.has-error {
+  outline: rgba(163, 12, 12, 0.7) solid 1px;
+}
