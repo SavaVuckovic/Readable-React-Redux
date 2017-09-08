@@ -12,6 +12,7 @@
   position: relative;
 }
 
+.post-header h2,
 .post-header h3 {
   margin: 0;
   cursor: pointer;
@@ -48,6 +49,11 @@
 .post-controls {
   padding: 10px 15px;
   background: #eee;
+}
+
+.single-post-controls {
+  padding: 15px 20px;
+  border: 1px solid #ddd;
 }
 
 .control {
@@ -88,5 +94,6 @@
     float: none;
     display: block;
     margin-top: 10px;
+    text-align: center;
   }
 }
