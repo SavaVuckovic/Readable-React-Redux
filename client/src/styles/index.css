@@ -13,3 +13,10 @@ body {
   background: url(../images/pattern.png);
   height: 100vh;
 }
+
+@media screen and (max-width: 500px) {
+  #root {
+    background: #fff;
+    height: 100vh;
+  }
+}
