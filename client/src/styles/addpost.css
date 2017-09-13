@@ -1,9 +1,23 @@
-.add-post-form {
+.add-post {
   box-shadow: 0 0 4px #777;
-  margin-top: 20px;
+  margin-top: 30px;
+  padding: 0;
+}
+
+.add-post-header {
+  padding: 10px 15px;
+  color: #fff;
+  background: #764abc;
+}
+
+.add-post-header h2 {
+  margin: 0;
+}
+
+.add-post-form {
   padding: 20px;
   text-align: center;
-  background: #eee;
+  background: #fff;
 }
 
 .form-field {
@@ -36,4 +50,14 @@
 
 .has-error {
   outline: rgba(163, 12, 12, 0.7) solid 1px;
+}
+
+@media screen and (max-width: 300px) {
+  .add-post {
+    margin-top: 0;
+  }
+
+  .add-post-form {
+    padding: 7px;
+  }
 }
