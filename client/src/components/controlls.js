@@ -3,9 +3,6 @@ import { connect } from 'react-redux';
 
 class Controlls extends Component {
   render() {
-    console.log('PROPS: ');
-    console.log(this.props);
-
     return (
       <div>
         <h4>constolls test</h4>
