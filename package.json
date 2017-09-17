@@ -1,0 +1,22 @@
+{
+  "name": "readable-udacity",
+  "version": "1.0.0",
+  "description": "React Nanodegree project two",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run start --prefix client\" \"npm run start --prefix api-server\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SavaVuckovic/Readable-React-Redux.git"
+  },
+  "author": "Sava Vuckovic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SavaVuckovic/Readable-React-Redux/issues"
+  },
+  "homepage": "https://github.com/SavaVuckovic/Readable-React-Redux#readme",
+  "dependencies": {
+    "concurrently": "^3.5.0"
+  }
+}

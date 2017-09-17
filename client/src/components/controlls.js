@@ -4,10 +4,13 @@ import { connect } from 'react-redux';
 class Controlls extends Component {
   render() {
     return (
-      <div>
-        <h4>constolls test</h4>
-        <p>{this.props.ex}</p>
-        <p>{this.props.testt}</p>
+      <div className="page-controlls">
+        <h3>Add New Post</h3>
+        <h4>Sort by:</h4>
+        <select>
+          <option>Most votes</option>
+          <option>Most recent</option>
+        </select>
       </div>
     );
   }
