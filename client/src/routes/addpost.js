@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import '../styles/addpost.css';
+import { Link } from 'react-router-dom';
 
 class AddPost extends Component {
   onFormSubmit(e) {
     e.preventDefault();
+
     console.log('Submitted');
+
   }
 
   render() {
@@ -13,6 +16,8 @@ class AddPost extends Component {
         <div className="add-post offset-md-3 col-md-6">
           <div className="add-post-header">
             <h2>Add Post</h2>
+            <Link to="/" className="go-back">Go back</Link>
+            <div className="clearfix"></div>
           </div>
           <form
             className="add-post-form"

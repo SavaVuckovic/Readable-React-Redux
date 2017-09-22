@@ -12,6 +12,18 @@
 
 .add-post-header h2 {
   margin: 0;
+  display: inline-block;
+}
+
+.go-back {
+  float: right;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.go-back:hover {
+  text-shadow: 0 0 7px yellow;
 }
 
 .add-post-form {

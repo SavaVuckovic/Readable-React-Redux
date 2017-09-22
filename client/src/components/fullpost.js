@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Comments from './comments';
 
-class SinglePost extends Component {
+class FullPost extends Component {
   render() {
     return (
       <div className="row">
@@ -36,12 +35,10 @@ class SinglePost extends Component {
             </div>
             <div className="clearfix"></div>
           </div>
-          <Comments />
         </div>
       </div>
-
     );
   }
 }
 
-export default SinglePost;
+export default FullPost;

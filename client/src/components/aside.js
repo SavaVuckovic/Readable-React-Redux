@@ -6,7 +6,7 @@ import '../styles/aside.css';
 class Aside extends Component {
   render() {
     return (
-      <div className="aside col-md-4">
+      <div className="aside col-md-4 push-md-8">
         <Controlls />
         <Categories />
       </div>

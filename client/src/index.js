@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import './styles/bootstrap-grid.min.css';
 import './styles/index.css';
-import App from './components/App';
+import App from './App';
 import reducers from './reducers';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
@@ -17,7 +17,7 @@ const store = createStore(
   composeWithDevTools(
     applyMiddleware(logger, thunk)
   )
-)
+);
 
 // connect the app to the store and render it
 ReactDOM.render(
