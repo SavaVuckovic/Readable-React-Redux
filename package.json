@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/SavaVuckovic/Readable-React-Redux#readme",
   "dependencies": {
-    "concurrently": "^3.5.0"
+    "concurrently": "^3.5.0",
+    "redux-promise": "^0.5.3"
   }
 }

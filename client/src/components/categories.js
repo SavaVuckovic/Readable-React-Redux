@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 // test
+/*
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { testAction } from '../actions/index';
+import { testAction } from '../actions/index';*/
 
 class Categories extends Component {
   render() {
@@ -12,7 +13,7 @@ class Categories extends Component {
           <h4>Categories</h4>
         </div>
         <ul className="category-list">
-          <li onClick={this.props.testAction} className="category">Technology</li>
+          <li className="category">Technology</li>
           <li className="category">Health</li>
           <li className="category">Math</li>
           <li className="category">Programming</li>
@@ -23,8 +24,12 @@ class Categories extends Component {
   }
 }
 
+export default Categories;
+
+/*
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ testAction }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(Categories);
+*/

@@ -12,7 +12,7 @@ import thunk from 'redux-thunk';
 import registerServiceWorker from './registerServiceWorker';
 
 // store with middleware and redux devtools extension enabled
-const store = createStore(
+export const store = createStore(
   reducers,
   composeWithDevTools(
     applyMiddleware(logger, thunk)

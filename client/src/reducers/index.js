@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import { testReducer } from './testReducer';
+import { postsReducer } from './postsReducer';
 
 const rootReducer = combineReducers({
   ex: () => 'another one',
-  testt: testReducer
+  posts: postsReducer
 });
 
 export default rootReducer;
