@@ -13,7 +13,7 @@ class Posts extends Component {
   render() {
     return (
       <div className="row">
-        <Aside />
+        <Aside categories={this.props.categories} />
         <PostList posts={this.props.posts || null} />
         {this.posts}
       </div>
@@ -21,8 +21,8 @@ class Posts extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { posts: state.posts };
+function mapStateToProps({ posts }) {
+  return { posts };
 }
 
 function mapDispatchToProps(dispatch) {

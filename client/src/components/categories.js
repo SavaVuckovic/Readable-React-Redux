@@ -1,11 +1,25 @@
 import React, { Component } from 'react';
-// test
-/*
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { testAction } from '../actions/index';*/
+import { getCategories } from '../actions';
 
 class Categories extends Component {
+  componentDidMount() {
+    this.props.getCategories();
+  }
+
+  renderCategories() {
+    switch(this.props.categories) {
+      case null:
+        return;
+      default:
+        let categories = this.props.categories.map((cat) => {
+          return(<li className="category">{cat.name}</li>)
+        })
+        return categories;
+    }
+  }
+
   render() {
     return (
       <div className="categories">
@@ -13,23 +27,19 @@ class Categories extends Component {
           <h4>Categories</h4>
         </div>
         <ul className="category-list">
-          <li className="category">Technology</li>
-          <li className="category">Health</li>
-          <li className="category">Math</li>
-          <li className="category">Programming</li>
-          <li className="category">Games</li>
+          {this.renderCategories()}
         </ul>
       </div>
     );
   }
 }
 
-export default Categories;
-
-/*
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ testAction }, dispatch);
+function mapStateToProps({ categories }) {
+  return { categories };
 }
 
-export default connect(null, mapDispatchToProps)(Categories);
-*/
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ getCategories }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Categories);
