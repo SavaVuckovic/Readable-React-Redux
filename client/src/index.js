@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { BrowserRouter } from 'react-router-dom';
 import './styles/bootstrap-grid.min.css';
 import './styles/index.css';
 import App from './App';
@@ -15,14 +16,17 @@ import registerServiceWorker from './registerServiceWorker';
 export const store = createStore(
   reducers,
   composeWithDevTools(
-    applyMiddleware(logger, thunk)
+    //applyMiddleware(logger, thunk)
+    applyMiddleware(thunk)
   )
 );
 
 // connect the app to the store and render it
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root'));
 registerServiceWorker();

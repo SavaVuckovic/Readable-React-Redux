@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getCategories } from '../actions';
+import { Link } from 'react-router-dom';
 
 class Categories extends Component {
   componentDidMount() {
@@ -14,8 +15,12 @@ class Categories extends Component {
         return;
       default:
         let categories = this.props.categories.map((cat) => {
-          return(<li className="category">{cat.name}</li>)
-        })
+          return(
+            <li key={cat.name}>
+              <Link to={`/posts/${cat.name}`} className="category" >{cat.name}</Link>
+            </li>
+          );
+        });
         return categories;
     }
   }
@@ -27,6 +32,7 @@ class Categories extends Component {
           <h4>Categories</h4>
         </div>
         <ul className="category-list">
+          <li key="All"><Link to="/" className="category">All</Link></li>
           {this.renderCategories()}
         </ul>
       </div>
