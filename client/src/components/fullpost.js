@@ -1,24 +1,35 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getSinglePost } from '../actions';
 
 class FullPost extends Component {
+  componentWillMount() {
+    this.props.getSinglePost(this.props.params.post_id);
+  }
+
   render() {
+    const post = this.props.post[0];
+    // temp solution
+    if(!post) {
+      return (<div>Loading</div>)
+    }
+
     return (
       <div className="row">
         <div className="post">
           <div className="post-header">
-            <h2>Post Title</h2>
-            <p>Posted by |Somebody| on |date|</p>
+            <h2>{post.title}</h2>
+            <p>Posted by {post.author} on {post.timestamp}</p>
             <div className="edit-delete">
               <i className="fa fa-pencil" aria-hidden="true"></i>
               <i className="fa fa-trash" aria-hidden="true"></i>
             </div>
           </div>
           <div className="post-body">
-            <p>Lorem ipsum dolor sit ncididunt ut labore et dolore magna aliqua.
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-              ut aliquip ex ea commodo consequat. Duis aute irure dolo sint occ.</p>
-            <p>aecat cupidatat non proident, sunt in culpa qui officia deamet, consectetur adipis
-              icing elit, sed do eiusmod tempor iserunt mollit anim id est laborum</p>
+            {post.body}
+            ------------------asdddddddddddddddd dddddddddddd ddddddddasdddd sadddddddddddddddddd
+            asddddddddddddddddddddddddddddd ddddddddddddddddd dddddddddddddddddddddddddddd
           </div>
           <div className="single-post-controls">
             <div className="control">
@@ -41,4 +52,14 @@ class FullPost extends Component {
   }
 }
 
-export default FullPost;
+function mapStateToProps(state) {
+  return {
+    post: state.onepost
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ getSinglePost }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FullPost);

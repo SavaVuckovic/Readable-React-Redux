@@ -6,7 +6,7 @@ class SinglePost extends Component {
   render() {
     return (
       <div>
-        <FullPost />
+        <FullPost params={this.props.match.params} />
         <Comments />
       </div>
     );
