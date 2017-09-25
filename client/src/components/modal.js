@@ -35,7 +35,9 @@ class Modal extends Component {
             <span
               className="modal-close"
               onClick={this.closeModal.bind(this)}>&times;</span>
+            <div className="clearfix"></div>
           </div>
+
           <div className="modal-body">
             {this.props.children}
           </div>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getSinglePost } from '../actions';
 import Modal from './modal';
+import AddCommentForm from './addcommentform';
 
 class FullPost extends Component {
   componentWillMount() {
@@ -30,10 +31,7 @@ class FullPost extends Component {
         <Modal
           ref="modal"
           header="Add a Comment">
-          <p>TEST</p>
-          <p>TEST</p>
-          <p>TEST</p>
-          <p>TEST</p>
+          <AddCommentForm />
         </Modal>
 
         <div className="post">

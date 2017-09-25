@@ -24,27 +24,29 @@
 }
 
 
-/* lateeeeeeeeeeerrrrrrrrrrrrrr */
 .modal-header {
   padding: 10px 0;
+  background: #764abc;
 }
 
 .modal-header h2 {
-  margin: 15px 10px 0;
+  float: left;
+  margin: 5px 10px 0;
+  color: #fff;
   font-size: 18px;
-  color: #0287c8;
   display: inline-block;
 }
 
 .modal-close {
   float: right;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 22px;
+  color: #fff;
+  margin: 0 10px;
 }
 
 .modal-close:hover {
   color: #ad0909;
-  font-size: 24px;
 }
 
 .modal-body {
