@@ -2,10 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getSinglePost } from '../actions';
+import Modal from './modal';
 
 class FullPost extends Component {
   componentWillMount() {
     this.props.getSinglePost(this.props.postID);
+  }
+
+  toggleModal() {
+    let modal = this.refs.modal.modalTarget;
+    if(modal.style.display !== 'block') {
+      modal.style.display = 'block';
+    }
+
   }
 
   render() {
@@ -17,6 +26,16 @@ class FullPost extends Component {
 
     return (
       <div className="row">
+
+        <Modal
+          ref="modal"
+          header="Add a Comment">
+          <p>TEST</p>
+          <p>TEST</p>
+          <p>TEST</p>
+          <p>TEST</p>
+        </Modal>
+
         <div className="post">
           <div className="post-header">
             <h2>{post.title}</h2>
@@ -44,9 +63,16 @@ class FullPost extends Component {
               <i className="fa fa-comments" aria-hidden="true"></i>
               <span>5</span>
             </div>
+
+            <div
+              id="addcomment"
+              onClick={this.toggleModal.bind(this)}>Add a comment</div>
+
             <div className="clearfix"></div>
           </div>
         </div>
+
+
       </div>
     );
   }
