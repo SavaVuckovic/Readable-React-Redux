@@ -31,7 +31,7 @@ class FullPost extends Component {
         <Modal
           ref="modal"
           header="Add a Comment">
-          <AddCommentForm />
+          <AddCommentForm postID={this.props.postID} />
         </Modal>
 
         <div className="post">

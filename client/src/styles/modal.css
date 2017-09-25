@@ -52,3 +52,9 @@
 .modal-body {
   padding: 10px 10px 15px;
 }
+
+@media screen and (max-width: 500px) {
+  .modal-content {
+    margin: 5%;
+  }
+}

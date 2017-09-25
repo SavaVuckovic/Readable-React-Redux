@@ -1,92 +1,33 @@
-export const GET_ALL_POSTS = 'GET_ALL_POSTS';
-export const GET_CATEGORIES = 'GET_CATEGORIES';
-export const GET_CATEGORY_POSTS = 'GET_CATEGORY_POSTS';
-export const GET_SINGLE_POST = 'GET_SINGLE_POST';
+// export category action types
+export { GET_CATEGORIES } from './categoryactions';
 
-export const GET_COMMENTS = 'GET_COMMENTS';
+// export post action types
+export {
+  GET_ALL_POSTS,
+  GET_CATEGORY_POSTS,
+  GET_SINGLE_POST,
+  ADD_POST
+} from './categoryactions';
 
-const ROOT_URL = 'http://localhost:3001';
-const headers = {
-  headers: {
-    Authorization: 'Something Random'
-  }
-}
+// export comment action types
+export {
+  GET_COMMENTS,
+  ADD_COMMENT
+} from './categoryactions';
 
-// fetch posts from the server
-export function getAllPosts() {
-  let request = fetch(`${ROOT_URL}/posts`, headers);
-  return (dispatch) => {
-    request
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({
-          type: GET_ALL_POSTS,
-          payload: data
-        });
-      });
-  };
-}
+// export category actions
+export { getCategories} from './categoryactions';
 
-// fetch categories from the server
-export function getCategories() {
-  let request = fetch(`${ROOT_URL}/categories`, headers);
+// export post actions
+export {
+  addPost,
+  getAllPosts,
+  getCategoryPosts,
+  getSinglePost,
+} from './postactions';
 
-  return (dispatch) => {
-    request
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({
-          type: GET_CATEGORIES,
-          payload: data.categories
-        });
-      });
-  };
-}
-
-// fetch posts for specific category
-export function getCategoryPosts(category) {
-  let request = fetch(`${ROOT_URL}/${category}/posts`, headers);
-
-  return (dispatch) => {
-    request
-    .then((res) => res.json())
-    .then((data) => {
-      dispatch({
-        type: GET_CATEGORY_POSTS,
-        payload: data
-      });
-    });
-  };
-}
-
-// fetch single post
-export function getSinglePost(id) {
-  let request = fetch(`${ROOT_URL}/posts/${id}`, headers);
-
-  return (dispatch) => {
-    request
-    .then((res) => res.json())
-    .then((data) => {
-      dispatch({
-        type: GET_SINGLE_POST,
-        payload: data
-      });
-    });
-  };
-}
-
-// fetch comments
-export function getComments(id) {
-  let request = fetch(`${ROOT_URL}/posts/${id}/comments`, headers);
-
-  return (dispatch) => {
-    request
-    .then((res) => res.json())
-    .then((data) => {
-      dispatch({
-        type: GET_COMMENTS,
-        payload: data
-      });
-    });
-  };
-}
+// export comment actions
+export {
+  getComments,
+  addComment
+} from './commentactions'

@@ -13,11 +13,11 @@ class Comments extends Component {
   render() {
     return (
       <div className="comments row">
-        <Comment />
-        <Comment />
-        <Comment />
-        <Comment />
-        <Comment />
+        {this.props.comments.map((comment) => {
+          return (
+            <Comment key={comment.id} comment={comment} />
+          );
+        })}
       </div>
     );
   }

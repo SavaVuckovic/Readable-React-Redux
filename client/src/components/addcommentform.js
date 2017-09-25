@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import '../styles/forms.css';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addComment } from '../actions';
 
 class AddCommentForm extends Component {
   constructor(props) {
@@ -12,12 +15,14 @@ class AddCommentForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('SUBMITTED')
+    // test
+    console.log('1');
+    this.props.addComment(this.state.author, this.state.body, this.props.postID);
   }
 
   render() {
     return (
-      <form className="form" onSubmit={this.handleSubmit}>
+      <form className="form" onSubmit={this.handleSubmit.bind(this)}>
         <input
           type="text"
           name="author"
@@ -33,4 +38,8 @@ class AddCommentForm extends Component {
   }
 }
 
-export default AddCommentForm;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ addComment }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(AddCommentForm);

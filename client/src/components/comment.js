@@ -14,15 +14,12 @@ class Comment extends Component {
             <img src={this.chooseImageRandomly()} alt="user" />
           </div>
           <div className="comment-author">
-            <h4>Sava Vuckovic</h4>
-            <span>Some timestamp</span>
+            <h4>{this.props.comment.author}</h4>
+            <span>{this.props.comment.timestamp}</span>
           </div>
         </div>
         <div className="comment-text">
-          jashjlsa hdkjashdk sajhdjks hak asdsdad aas
-          jashjlsa hdkj jashjl sa hdkja shdk sajhdjks hak a
-          sdsdad aasashd
-          k sajhdjks hak asdsdad aas
+          {this.props.comment.body}
         </div>
         <div className="comment-controlls">
           <span>some vote controlls here</span>
