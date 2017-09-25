@@ -5,7 +5,7 @@ import { getSinglePost } from '../actions';
 
 class FullPost extends Component {
   componentWillMount() {
-    this.props.getSinglePost(this.props.params.post_id);
+    this.props.getSinglePost(this.props.postID);
   }
 
   render() {

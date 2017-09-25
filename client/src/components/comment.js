@@ -24,6 +24,9 @@ class Comment extends Component {
           sdsdad aasashd
           k sajhdjks hak asdsdad aas
         </div>
+        <div className="comment-controlls">
+          <span>some vote controlls here</span>
+        </div>
       </div>
     );
   }

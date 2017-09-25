@@ -3,6 +3,8 @@ export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const GET_CATEGORY_POSTS = 'GET_CATEGORY_POSTS';
 export const GET_SINGLE_POST = 'GET_SINGLE_POST';
 
+export const GET_COMMENTS = 'GET_COMMENTS';
+
 const ROOT_URL = 'http://localhost:3001';
 const headers = {
   headers: {
@@ -67,6 +69,22 @@ export function getSinglePost(id) {
     .then((data) => {
       dispatch({
         type: GET_SINGLE_POST,
+        payload: data
+      });
+    });
+  };
+}
+
+// fetch comments
+export function getComments(id) {
+  let request = fetch(`${ROOT_URL}/posts/${id}/comments`, headers);
+
+  return (dispatch) => {
+    request
+    .then((res) => res.json())
+    .then((data) => {
+      dispatch({
+        type: GET_COMMENTS,
         payload: data
       });
     });

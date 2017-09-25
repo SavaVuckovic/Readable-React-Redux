@@ -6,8 +6,8 @@ class SinglePost extends Component {
   render() {
     return (
       <div>
-        <FullPost params={this.props.match.params} />
-        <Comments />
+        <FullPost postID={this.props.match.params.post_id} />
+        <Comments postID={this.props.match.params.post_id} />
       </div>
     );
   }

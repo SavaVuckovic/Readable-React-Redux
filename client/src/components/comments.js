@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import Comment from './comment';
 import '../styles/comments.css';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getComments } from '../actions';
 
 class Comments extends Component {
+  componentWillMount() {
+    this.props.getComments(this.props.postID);
+  }
+
   render() {
     return (
-      <div className="comments">
+      <div className="comments row">
         <Comment />
         <Comment />
         <Comment />
@@ -16,4 +23,12 @@ class Comments extends Component {
   }
 }
 
-export default Comments;
+function mapStateToProps({ comments }) {
+  return { comments };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ getComments }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Comments);

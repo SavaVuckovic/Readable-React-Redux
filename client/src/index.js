@@ -8,7 +8,7 @@ import './styles/bootstrap-grid.min.css';
 import './styles/index.css';
 import App from './App';
 import reducers from './reducers';
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import registerServiceWorker from './registerServiceWorker';
 
