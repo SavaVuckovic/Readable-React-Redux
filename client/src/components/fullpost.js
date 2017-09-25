@@ -19,7 +19,7 @@ class FullPost extends Component {
   }
 
   render() {
-    const post = this.props.post[0];
+    const post = this.props.post;
     // temp solution
     if(!post) {
       return (<div>Loading</div>)
@@ -78,7 +78,7 @@ class FullPost extends Component {
 
 function mapStateToProps(state) {
   return {
-    post: state.onepost
+    post: state.posts[0]
   }
 }
 

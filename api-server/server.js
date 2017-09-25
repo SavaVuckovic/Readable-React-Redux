@@ -273,8 +273,6 @@ app.put('/comments/:id', bodyParser.json(), (req, res) => {
 })
 
 app.post('/comments', bodyParser.json(), (req, res) => {
-    // debug
-    console.log(req.body);
     comments.add(req.token, req.body)
       .then(
           (data) => res.send(data),

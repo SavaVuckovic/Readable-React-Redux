@@ -7,13 +7,13 @@ export {
   GET_CATEGORY_POSTS,
   GET_SINGLE_POST,
   ADD_POST
-} from './categoryactions';
+} from './postactions';
 
 // export comment action types
 export {
   GET_COMMENTS,
   ADD_COMMENT
-} from './categoryactions';
+} from './commentactions';
 
 // export category actions
 export { getCategories} from './categoryactions';

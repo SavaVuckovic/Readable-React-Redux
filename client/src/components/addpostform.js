@@ -5,15 +5,25 @@ import { bindActionCreators } from 'redux';
 import { addPost, getCategories } from '../actions';
 
 class AddPostForm extends Component {
-  componentDidMount() {
+  // get all categories and create state for the controlled form inputs
+  componentWillMount() {
     this.props.getCategories();
+    this.state = {
+      title: '',
+      body: '',
+      author: '',
+      category: ''
+    };
   }
 
-  onFormSubmit(e) {
+  // add a post on form submit
+  handleSubmit(e) {
     e.preventDefault();
-    this.props.addPost();
+    const { title, body, author, category } = this.state;
+    this.props.addPost(title, body, author, category);
   }
 
+  // renders <option> tag for each category
   renderCategoryOptions() {
     switch(this.props.categories) {
       case null:
@@ -28,22 +38,31 @@ class AddPostForm extends Component {
     }
   }
 
+  // renders a form for adding a post
   render() {
     return (
       <form
         className="form"
-        onSubmit={this.onFormSubmit.bind(this)}>
+        onSubmit={this.handleSubmit.bind(this)}>
         <input
           type="text"
-          placeholder="Title" />
+          placeholder="Title"
+          value={this.state.title}
+          onChange={(e) => this.setState({ title: e.target.value })} />
         <input
           type="text"
-          placeholder="Author" />
-        <select>
+          placeholder="Author"
+          value={this.state.author}
+          onChange={(e) => this.setState({ author: e.target.value })} />
+        <select
+          value={this.state.category}
+          onChange={(e) => this.setState({ category: e.target.value })}>
           <option>Select category</option>
           {this.renderCategoryOptions()}
         </select>
-        <textarea></textarea>
+        <textarea
+          value={this.state.body}
+          onChange={(e) => this.setState({ body: e.target.value })}></textarea>
         <button type="submit">Post</button>
       </form>
     );

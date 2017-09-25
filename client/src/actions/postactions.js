@@ -1,7 +1,7 @@
 export const GET_ALL_POSTS = 'GET_ALL_POSTS';
 export const GET_CATEGORY_POSTS = 'GET_CATEGORY_POSTS';
 export const GET_SINGLE_POST = 'GET_SINGLE_POST';
-export const ADD_POST = 'ADD_POST'
+export const ADD_POST = 'ADD_POST';
 
 // root URL and headers
 const ROOT_URL = 'http://localhost:3001';
@@ -22,13 +22,39 @@ function guid() {
 }
 
 // add post
-export function addPost() {
-  console.log('Add Post Called');
-  console.log(guid())
-  return {
-    type: ADD_POST,
-    payload: 'TEST'
-  }
+export function addPost(title, body, author, category) {
+  const postObj = {
+    id: guid(),
+    timestamp: Date.now(),
+    title,
+    body,
+    author,
+    category
+  };
+
+  const myHeaders = new Headers({
+    'Content-Type': 'application/json',
+    'Authorization': 'Something Random'
+  });
+
+  const request = fetch(`${ROOT_URL}/posts`, {
+    headers: myHeaders,
+    method: 'POST',
+    body: JSON.stringify(postObj)
+  });
+
+  // debug ////////////////////
+  console.log(JSON.stringify(postObj));
+
+  return (dispatch) => {
+    request
+      .then((res) => {
+        dispatch({
+          type: ADD_POST,
+          payload: res.data
+        });
+      });
+  };
 }
 
 // fetch posts from the server

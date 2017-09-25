@@ -6,7 +6,6 @@ import { commentsReducer } from './commentsReducer';
 const rootReducer = combineReducers({
   categories: categoriesReducer,
   posts: postsReducer,
-  onepost: postsReducer,
   comments: commentsReducer
 });
 
