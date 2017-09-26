@@ -17,6 +17,7 @@ class AddCommentForm extends Component {
   // add a comment on form submit
   handleSubmit(e) {
     e.preventDefault();
+    this.props.hideModal();
     this.props.addComment(this.state.author, this.state.body, this.props.postID);
   }
 

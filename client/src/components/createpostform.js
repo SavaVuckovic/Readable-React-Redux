@@ -3,6 +3,7 @@ import '../styles/forms.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addPost, getCategories } from '../actions';
+import { withRouter } from 'react-router'
 
 class CreatePostForm extends Component {
   // get all categories and create state for the controlled form inputs
@@ -21,6 +22,7 @@ class CreatePostForm extends Component {
     e.preventDefault();
     const { title, body, author, category } = this.state;
     this.props.addPost(title, body, author, category);
+    this.props.history.push('/');
   }
 
   // renders <option> tag for each category
@@ -79,4 +81,5 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ addPost, getCategories }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreatePostForm);
+const CreatePostFormWithRouter = withRouter(CreatePostForm);
+export default connect(mapStateToProps, mapDispatchToProps)(CreatePostFormWithRouter);

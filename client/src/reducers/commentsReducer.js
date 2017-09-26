@@ -5,7 +5,7 @@ export function commentsReducer(state = [], action) {
     case GET_COMMENTS:
       return action.payload;
     case ADD_COMMENT:
-      return state;
+      return [ ...state, action.payload ];
     default:
       return state;
   }

@@ -11,11 +11,19 @@ class FullPost extends Component {
     this.props.getSinglePost(this.props.postID);
   }
 
-  // show/hide modal
-  toggleModal() {
+  // show modal
+  showModal() {
     let modal = this.refs.modal.modalTarget;
     if(modal.style.display !== 'block') {
       modal.style.display = 'block';
+    }
+  }
+
+  // test
+  hideModal() {
+    let modal = this.refs.modal.modalTarget;
+    if(modal.style.display !== 'none') {
+      modal.style.display = 'none';
     }
   }
 
@@ -34,7 +42,9 @@ class FullPost extends Component {
         <Modal
           ref="modal"
           header="Add a Comment">
-          <AddCommentForm postID={this.props.postID} />
+          <AddCommentForm
+            postID={this.props.postID}
+            hideModal={this.hideModal.bind(this)} />
         </Modal>
 
         <div className="fullpost">
@@ -69,7 +79,7 @@ class FullPost extends Component {
 
             <div
               id="addcomment"
-              onClick={this.toggleModal.bind(this)}>Add a comment</div>
+              onClick={this.showModal.bind(this)}>Add a comment</div>
 
             <div className="clearfix"></div>
           </div>
