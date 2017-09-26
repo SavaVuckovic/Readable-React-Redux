@@ -65,18 +65,5 @@ export function addComment(author, body, postID) {
           payload: data
         });
       });
-
-/*
-      .then((res) => {
-        // test
-        console.log(res);
-        console.log(res.json());
-        console.log(res.data)
-
-        dispatch({
-          type: ADD_COMMENT,
-          payload: res.data
-        });
-      });*/
   };
 }

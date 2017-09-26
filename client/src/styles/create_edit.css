@@ -26,12 +26,19 @@
   text-shadow: 0 0 7px yellow;
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 650px) {
   .create-edit-post {
     margin-top: 0;
   }
 
   .create-edit-post-form {
     padding: 7px;
+  }
+}
+
+
+@media screen and (max-width: 300px) {
+  .create-edit-post-header h2 {
+    font-size: 16px;
   }
 }

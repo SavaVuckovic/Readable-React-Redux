@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getSinglePost } from '../actions';
+import { Link } from 'react-router-dom';
 import Modal from './modal';
 import AddCommentForm from './addcommentform';
 
@@ -51,9 +52,15 @@ class FullPost extends Component {
 
           <div className="post-header">
             <div className="post-header-controlls">
-              <i className="fa fa-arrow-circle-left" aria-hidden="true"></i>
-              <i className="fa fa-pencil" aria-hidden="true"></i>
+
+              <Link to="/"><i className="fa fa-arrow-circle-left" aria-hidden="true"></i></Link>
+              <Link to={{
+                pathname: '/posts/create_edit',
+                hash: '#edit',
+                state: { fromPost: true }
+              }}><i className="fa fa-pencil" aria-hidden="true"></i></Link>
               <i className="fa fa-trash" aria-hidden="true"></i>
+
             </div>
             <h2>{post.title}</h2>
             <p>Posted by {post.author} on {post.timestamp}</p>
@@ -94,13 +101,13 @@ class FullPost extends Component {
 // map post to show to props
 function mapStateToProps(state) {
   return {
-    post: state.posts[0]
-  }
+    post: state.activePost
+  };
 }
 
 // map action for fetching a post to props
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getSinglePost }, dispatch)
+  return bindActionCreators({ getSinglePost }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FullPost);

@@ -63,7 +63,9 @@
   }
 
   .form input,
-  .form textarea {
-    margin-bottom: 10px;
+  .form textarea,
+  .form select {
+    margin: 5px;
+    font-size: 14px;
   }
 }

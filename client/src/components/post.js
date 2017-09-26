@@ -14,7 +14,11 @@ class Post extends Component {
           <h3>{post.title}</h3>
           <p>Posted by {post.author} on {post.timestamp}</p>
           <div className="post-header-controlls">
-            <i className="fa fa-pencil" aria-hidden="true"></i>
+            <Link to={{
+              pathname: '/posts/create_edit',
+              hash: '#edit',
+              state: { fromPost: true }
+            }}><i className="fa fa-pencil" aria-hidden="true"></i></Link>
             <i className="fa fa-trash" aria-hidden="true"></i>
           </div>
         </div>
