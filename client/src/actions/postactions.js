@@ -43,9 +43,6 @@ export function addPost(title, body, author, category) {
     body: JSON.stringify(postObj)
   });
 
-  // debug ////////////////////
-  console.log(JSON.stringify(postObj));
-
   return (dispatch) => {
     request
       .then((res) => {

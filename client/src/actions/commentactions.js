@@ -45,20 +45,24 @@ export function addComment(author, body, postID) {
     parentId: postID
   };
 
+  const myHeaders = new Headers({
+    'Content-Type': 'application/json',
+    'Authorization': 'Something Random'
+  });
+
   let request = fetch(`${ROOT_URL}/comments`, {
-    headers: {
-      Authorization: 'Something Random'
-    },
+    headers: myHeaders,
     method: 'POST',
     body: JSON.stringify(commentObj)
   });
 
   return (dispatch) => {
-    request.then((res) => {
-      dispatch({
-        type: ADD_COMMENT,
-        payload: res.data
+    request
+      .then((res) => {
+        dispatch({
+          type: ADD_COMMENT,
+          payload: res.data
+        });
       });
-    });
   };
 }

@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { addComment } from '../actions';
 
 class AddCommentForm extends Component {
+  // store form values in the state
   constructor(props) {
     super(props);
     this.state = {
@@ -13,11 +14,13 @@ class AddCommentForm extends Component {
     };
   }
 
+  // add a comment on form submit
   handleSubmit(e) {
     e.preventDefault();
     this.props.addComment(this.state.author, this.state.body, this.props.postID);
   }
 
+  // render a form for adding a comment
   render() {
     return (
       <form className="form" onSubmit={this.handleSubmit.bind(this)}>
@@ -39,6 +42,7 @@ class AddCommentForm extends Component {
   }
 }
 
+// map action for adding a comment to props
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ addComment }, dispatch);
 }
