@@ -5,10 +5,12 @@ import { getCategories } from '../actions';
 import { Link } from 'react-router-dom';
 
 class Categories extends Component {
-  componentDidMount() {
+  // get all categories from the api server
+  componentWillMount() {
     this.props.getCategories();
   }
 
+  // render an <li> ekement with a link to category page for each category
   renderCategories() {
     switch(this.props.categories) {
       case null:
@@ -25,6 +27,7 @@ class Categories extends Component {
     }
   }
 
+  // render categories
   render() {
     return (
       <div className="categories">
@@ -40,10 +43,12 @@ class Categories extends Component {
   }
 }
 
+// map categories from the api server to props
 function mapStateToProps({ categories }) {
   return { categories };
 }
 
+// map getCategories action to props
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ getCategories }, dispatch);
 }

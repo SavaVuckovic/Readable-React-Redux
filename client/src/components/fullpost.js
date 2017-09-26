@@ -6,23 +6,26 @@ import Modal from './modal';
 import AddCommentForm from './addcommentform';
 
 class FullPost extends Component {
+  // fetch the post from the api server
   componentWillMount() {
     this.props.getSinglePost(this.props.postID);
   }
 
+  // show/hide modal
   toggleModal() {
     let modal = this.refs.modal.modalTarget;
     if(modal.style.display !== 'block') {
       modal.style.display = 'block';
     }
-
   }
 
+  // render a post with all related information
   render() {
     const post = this.props.post;
-    // temp solution
     if(!post) {
-      return (<div>Loading</div>)
+      return (
+        <div>Loading...</div>
+      );
     }
 
     return (
@@ -34,20 +37,22 @@ class FullPost extends Component {
           <AddCommentForm postID={this.props.postID} />
         </Modal>
 
-        <div className="post">
+        <div className="fullpost">
+
           <div className="post-header">
-            <h2>{post.title}</h2>
-            <p>Posted by {post.author} on {post.timestamp}</p>
-            <div className="edit-delete">
+            <div className="post-header-controlls">
+              <i className="fa fa-arrow-circle-left" aria-hidden="true"></i>
               <i className="fa fa-pencil" aria-hidden="true"></i>
               <i className="fa fa-trash" aria-hidden="true"></i>
             </div>
+            <h2>{post.title}</h2>
+            <p>Posted by {post.author} on {post.timestamp}</p>
           </div>
+
           <div className="post-body">
             {post.body}
-            ------------------asdddddddddddddddd dddddddddddd ddddddddasdddd sadddddddddddddddddd
-            asddddddddddddddddddddddddddddd ddddddddddddddddd dddddddddddddddddddddddddddd
           </div>
+
           <div className="single-post-controls">
             <div className="control">
               <i className="fa fa-thumbs-up" aria-hidden="true"></i>
@@ -68,20 +73,22 @@ class FullPost extends Component {
 
             <div className="clearfix"></div>
           </div>
-        </div>
 
+        </div>
 
       </div>
     );
   }
 }
 
+// map post to show to props
 function mapStateToProps(state) {
   return {
     post: state.posts[0]
   }
 }
 
+// map action for fetching a post to props
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ getSinglePost }, dispatch)
 }

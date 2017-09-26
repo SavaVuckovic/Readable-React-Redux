@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import FullPost from '../components/fullpost';
 import Comments from '../components/comments';
 
-class SinglePost extends Component {
-  render() {
+// render single post page
+const SinglePost = (props) => {
     return (
       <div>
-        <FullPost postID={this.props.match.params.post_id} />
-        <Comments postID={this.props.match.params.post_id} />
+        <FullPost postID={props.match.params.post_id} />
+        <Comments postID={props.match.params.post_id} />
       </div>
     );
-  }
 }
 
 export default SinglePost;

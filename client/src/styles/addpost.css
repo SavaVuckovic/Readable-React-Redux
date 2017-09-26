@@ -1,16 +1,16 @@
-.add-post {
+.create-edit-post {
   box-shadow: 0 1px 4px #777;
   margin-top: 30px;
   padding: 0;
 }
 
-.add-post-header {
+.create-edit-post-header {
   padding: 10px 15px;
   color: #fff;
   background: #764abc;
 }
 
-.add-post-header h2 {
+.create-edit-post-header h2 {
   margin: 0;
   display: inline-block;
 }
@@ -27,11 +27,11 @@
 }
 
 @media screen and (max-width: 300px) {
-  .add-post {
+  .create-edit-post {
     margin-top: 0;
   }
 
-  .add-post-form {
+  .create-edit-post-form {
     padding: 7px;
   }
 }

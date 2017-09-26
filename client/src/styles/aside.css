@@ -50,7 +50,6 @@
   padding: 15px 10px;
   text-align: center;
   color: white;
-  /*background: #a30c0c;*/
   background: #764abc;
 }
 
@@ -91,5 +90,9 @@
 
   .page-controlls {
     margin-bottom: 15px;
+  }
+
+  .categories {
+    margin-bottom: 0;
   }
 }

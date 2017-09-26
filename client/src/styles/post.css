@@ -1,12 +1,16 @@
 /* entire post */
-.post {
+.post,
+.fullpost {
   box-shadow: 0 0 3px #777;
   margin: 25px 0;
 }
 
+.fullpost {
+  width: 100%;
+}
+
 /* post header */
 .post-header {
-  /*background: #a30c0c;*/
   background: #764abc;
   color: #fff;
   padding: 15px 15px 10px;
@@ -24,20 +28,20 @@
   font-size: 14px;
 }
 
-.edit-delete {
+.post-header-controlls {
   position: absolute;
   top: 0;
   right: 0;
   margin: 10px;
 }
 
-.edit-delete i {
+.post-header-controlls i {
   margin: 0 5px;
   font-size: 18px;
   cursor: pointer;
 }
 
-.edit-delete i:hover {
+.post-header-controlls i:hover {
   text-shadow: 0 0 7px yellow;
 }
 
@@ -71,7 +75,6 @@
 }
 
 .control i:hover {
-  /*color: #a30c0c;*/
   color: #764abc;
 }
 
@@ -83,18 +86,31 @@
   float: right;
   text-decoration: none;
   font-weight: bold;
-  /*color: #a30c0c;*/
   color: #764abc;
 }
 
 #addcomment {
   float: right;
+  font-size: 15px;
+  font-weight: bold;
+  color: #444;
+}
+
+#addcomment:hover {
+  color: #764abc;
 }
 
 /* smaller screens */
 @media screen and (max-width: 765px) {
-  .post {
-    margin : 15px 0;
+  .fullpost {
+    margin: 0 0 15px;
+  }
+
+  .post-header-controlls {
+    position: static;
+    display: block;
+    margin: 0 0 10px;
+    text-align: right;
   }
 
   .post-body {

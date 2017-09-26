@@ -6,10 +6,12 @@ import { bindActionCreators } from 'redux';
 import { getComments } from '../actions';
 
 class Comments extends Component {
+  // fetch comments for particular post from the api server
   componentWillMount() {
     this.props.getComments(this.props.postID);
   }
 
+  // render <Comment /> component for each comment
   render() {
     return (
       <div className="comments row">
@@ -23,10 +25,12 @@ class Comments extends Component {
   }
 }
 
+// map comments from api server to props
 function mapStateToProps({ comments }) {
   return { comments };
 }
 
+// map action for fetching comments to props
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ getComments }, dispatch);
 }

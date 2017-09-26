@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Categories from './categories';
 import Controlls from './controlls';
 import '../styles/aside.css';
 
-class Aside extends Component {
-  render() {
-    return (
-      <div className="aside col-md-4 push-md-8">
-        <Controlls />
-        <Categories />
-      </div>
-    );
-  }
+// render page controlls and categories
+const Aside = () => {
+  return (
+    <div className="aside col-md-4 push-md-8">
+      <Controlls />
+      <Categories />
+    </div>
+  );
 }
 
 export default Aside;

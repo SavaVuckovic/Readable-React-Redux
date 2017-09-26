@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addPost, getCategories } from '../actions';
 
-class AddPostForm extends Component {
+class CreatePostForm extends Component {
   // get all categories and create state for the controlled form inputs
   componentWillMount() {
     this.props.getCategories();
@@ -69,12 +69,14 @@ class AddPostForm extends Component {
   }
 }
 
+// map categories to props
 function mapStateToProps({ categories }) {
   return { categories };
 }
 
+// map actions for adding a post and for fetching categories to props
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ addPost, getCategories }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddPostForm);
+export default connect(mapStateToProps, mapDispatchToProps)(CreatePostForm);
