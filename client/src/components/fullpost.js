@@ -20,7 +20,7 @@ class FullPost extends Component {
     }
   }
 
-  // test
+  // hide modal
   hideModal() {
     let modal = this.refs.modal.modalTarget;
     if(modal.style.display !== 'none') {
@@ -56,8 +56,7 @@ class FullPost extends Component {
               <Link to="/"><i className="fa fa-arrow-circle-left" aria-hidden="true"></i></Link>
               <Link to={{
                 pathname: '/posts/create_edit',
-                hash: '#edit',
-                state: { fromPost: true }
+                state: { fromSinglePost: true }
               }}><i className="fa fa-pencil" aria-hidden="true"></i></Link>
               <i className="fa fa-trash" aria-hidden="true"></i>
 
@@ -86,7 +85,7 @@ class FullPost extends Component {
 
             <div
               id="addcomment"
-              onClick={this.showModal.bind(this)}>Add a comment</div>
+              onClick={this.showModal.bind(this)}>Write a comment</div>
 
             <div className="clearfix"></div>
           </div>

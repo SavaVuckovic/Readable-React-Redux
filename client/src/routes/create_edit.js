@@ -9,7 +9,7 @@ class CreateEditPost extends Component {
   // check if user wants to edit post or create a new one
   constructor(props) {
     super(props);
-    if(this.props.location.state && this.props.location.state.fromPost === true) {
+    if(this.props.location.state) {
       this.edit = true;
     } else {
       this.edit = false;

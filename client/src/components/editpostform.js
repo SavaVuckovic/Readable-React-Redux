@@ -2,28 +2,25 @@ import React, { Component } from 'react';
 import '../styles/forms.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { withRouter } from 'react-router';
-import { getCategories } from '../actions';
+import { getCategories, getSinglePost } from '../actions';
+import { withRouter } from 'react-router-dom';
 
 class EditPostForm extends Component {
-  // get categories, set post values to state so they can be edited with form
+  // get categories, active post
   componentWillMount() {
+    this.props.getSinglePost(this.props.location.hash.substr(0));
     this.props.getCategories();
-    this.post = this.props.activePost;
     this.state = {
-      title: this.post.title,
-      body: this.post.body,
-      author: this.post.author,
-      category: this.post.category
-    }
+      title: this.props.post.title,
+      body: this.props.post.body,
+      author: this.props.post.author,
+      category: this.props.post.category
+    };
   }
 
   // edit post on form submit
   handleSubmit(e) {
     e.preventDefault();
-    // const { title, body, author, category } = this.state;
-    // action here
-    //this.props.history.push('/');
   }
 
   // renders <option> tag for each category
@@ -41,7 +38,15 @@ class EditPostForm extends Component {
     }
   }
 
+  // render a form for editing a post
   render() {
+    const post = this.props.post;
+    if(!post) {
+      return (
+        <div>NO POST IS SELECTED</div>
+      );
+    }
+
     return (
       <form
         className="form"
@@ -69,13 +74,15 @@ class EditPostForm extends Component {
   }
 }
 
-function mapStateToProps({ activePost, categories }) {
-  return { activePost, categories };
+function mapStateToProps(state) {
+  return {
+    categories: state.categories,
+    post: state.posts[0]
+  };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getCategories }, dispatch);
+  return bindActionCreators({ getCategories, getSinglePost }, dispatch);
 }
 
-const EditPostFormWithRouter = withRouter(EditPostForm);
-export default connect(mapStateToProps, mapDispatchToProps)(EditPostFormWithRouter);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(EditPostForm));

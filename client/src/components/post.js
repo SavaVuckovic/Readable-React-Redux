@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 class Post extends Component {
   // render individual post in postlist
@@ -12,11 +13,11 @@ class Post extends Component {
 
         <div className="post-header">
           <h3>{post.title}</h3>
-          <p>Posted by {post.author} on {post.timestamp}</p>
+          <p>Posted by {post.author} on {moment(post.timestamp).format('ddd MM. DD. YYYY.')}</p>
           <div className="post-header-controlls">
             <Link to={{
               pathname: '/posts/create_edit',
-              hash: '#edit',
+              hash: `#${post.id}`,
               state: { fromPost: true }
             }}><i className="fa fa-pencil" aria-hidden="true"></i></Link>
             <i className="fa fa-trash" aria-hidden="true"></i>
