@@ -1,8 +1,30 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Modal from './modal';
 import moment from 'moment';
 
 class Post extends Component {
+  // show modal
+  showDeleteModal() {
+    let modal = this.refs.deleteModal.modalTarget;
+    if(modal.style.display !== 'block') {
+      modal.style.display = 'block';
+    }
+  }
+
+  // hide modal
+  hideDeleteModal() {
+    let modal = this.refs.deleteModal.modalTarget;
+    if(modal.style.display !== 'none') {
+      modal.style.display = 'none';
+    }
+  }
+
+  // delete post
+  deletePost() {
+    console.log('delete called');
+  }
+
   // render individual post in postlist
   render() {
     const post = this.props.post;
@@ -10,6 +32,19 @@ class Post extends Component {
 
     return (
       <div className="post">
+
+        <Modal
+          ref="deleteModal"
+          header="Delete Post">
+          <h4 className="warning">Are you sure you want to delete this post?</h4>
+          <button
+            className="cancel-btn"
+            onClick={this.hideDeleteModal.bind(this)} >Cancel</button>
+          <button
+            className="delete-btn"
+            onClick={this.deletePost}>Delete</button>
+          <div className="clearfix"></div>
+        </Modal>
 
         <div className="post-header">
           <h3>{post.title}</h3>
@@ -20,7 +55,7 @@ class Post extends Component {
               hash: `#${post.id}`,
               state: { fromPost: true }
             }}><i className="fa fa-pencil" aria-hidden="true"></i></Link>
-            <i className="fa fa-trash" aria-hidden="true"></i>
+            <i className="fa fa-trash" aria-hidden="true" onClick={this.showDeleteModal.bind(this)}></i>
           </div>
         </div>
 

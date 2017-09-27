@@ -21,6 +21,7 @@
 .form select {
   background: #fff;
   border: none;
+  padding: 10px 6px;
 }
 
 .form textarea {

@@ -13,20 +13,41 @@ class FullPost extends Component {
     this.props.getSinglePost(this.props.postID);
   }
 
-  // show modal
-  showModal() {
-    let modal = this.refs.modal.modalTarget;
+  // show comment modal
+  showCommentModal() {
+    let modal = this.refs.commentModal.modalTarget;
     if(modal.style.display !== 'block') {
       modal.style.display = 'block';
     }
   }
 
-  // hide modal
-  hideModal() {
-    let modal = this.refs.modal.modalTarget;
+  // hide comment modal
+  hideCommentModal() {
+    let modal = this.refs.commentModal.modalTarget;
     if(modal.style.display !== 'none') {
       modal.style.display = 'none';
     }
+  }
+
+  // show delete modal
+  showDeleteModal() {
+    let modal = this.refs.deleteModal.modalTarget;
+    if(modal.style.display !== 'block') {
+      modal.style.display = 'block';
+    }
+  }
+
+  // hide delete modal
+  hideDeleteModal() {
+    let modal = this.refs.deleteModal.modalTarget;
+    if(modal.style.display !== 'none') {
+      modal.style.display = 'none';
+    }
+  }
+
+  // delete post
+  deletePost() {
+    console.log('delete called');
   }
 
   // render a post with all related information
@@ -42,11 +63,24 @@ class FullPost extends Component {
       <div className="row">
 
         <Modal
-          ref="modal"
+          ref="commentModal"
           header="Add a Comment">
           <AddCommentForm
             postID={this.props.postID}
-            hideModal={this.hideModal.bind(this)} />
+            hideModal={this.hideCommentModal.bind(this)} />
+        </Modal>
+
+        <Modal
+          ref="deleteModal"
+          header="Delete Post">
+          <h4 className="warning">Are you sure you want to delete this post?</h4>
+          <button
+            className="cancel-btn"
+            onClick={this.hideDeleteModal.bind(this)} >Cancel</button>
+          <button
+            className="delete-btn"
+            onClick={this.deletePost}>Delete</button>
+          <div className="clearfix"></div>
         </Modal>
 
         <div className="fullpost">
@@ -60,7 +94,7 @@ class FullPost extends Component {
                 hash: `#${post.id}`,
                 state: { fromSinglePost: true }
               }}><i className="fa fa-pencil" aria-hidden="true"></i></Link>
-              <i className="fa fa-trash" aria-hidden="true"></i>
+              <i className="fa fa-trash" aria-hidden="true" onClick={this.showDeleteModal.bind(this)}></i>
 
             </div>
             <h2>{post.title}</h2>
@@ -87,7 +121,7 @@ class FullPost extends Component {
 
             <div
               id="addcomment"
-              onClick={this.showModal.bind(this)}>Write a comment</div>
+              onClick={this.showCommentModal.bind(this)}>Write a comment</div>
 
             <div className="clearfix"></div>
           </div>

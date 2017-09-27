@@ -3,6 +3,7 @@
 .fullpost {
   box-shadow: 0 0 3px #777;
   margin: 25px 0;
+  overflow: hidden;
 }
 
 .fullpost {
