@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getSinglePost } from '../actions';
@@ -56,13 +57,14 @@ class FullPost extends Component {
               <Link to="/"><i className="fa fa-arrow-circle-left" aria-hidden="true"></i></Link>
               <Link to={{
                 pathname: '/posts/create_edit',
+                hash: `#${post.id}`,
                 state: { fromSinglePost: true }
               }}><i className="fa fa-pencil" aria-hidden="true"></i></Link>
               <i className="fa fa-trash" aria-hidden="true"></i>
 
             </div>
             <h2>{post.title}</h2>
-            <p>Posted by {post.author} on {post.timestamp}</p>
+            <p>Posted by {post.author} on {moment(post.timestamp).format('ddd MM. DD. YYYY.')}</p>
           </div>
 
           <div className="post-body">

@@ -1,7 +1,6 @@
 import {
   GET_ALL_POSTS,
-  GET_CATEGORY_POSTS,
-  GET_SINGLE_POST
+  GET_CATEGORY_POSTS
 } from '../actions';
 
 export function postsReducer(state = [], action) {
@@ -10,8 +9,6 @@ export function postsReducer(state = [], action) {
     case GET_CATEGORY_POSTS:
       state = action.payload;
       return state;
-    case GET_SINGLE_POST:
-      return [ action.payload ];
     default:
       return state;
   }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 
 class Comment extends Component {
   // choose comment avatar image randomly
@@ -18,7 +19,7 @@ class Comment extends Component {
           </div>
           <div className="comment-author">
             <h4>{this.props.comment.author}</h4>
-            <span>{this.props.comment.timestamp}</span>
+            <span>{moment(this.props.comment.timestamp).format('ddd MM. DD. YYYY.')}</span>
           </div>
         </div>
 

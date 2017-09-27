@@ -8,19 +8,33 @@ import { withRouter } from 'react-router-dom';
 class EditPostForm extends Component {
   // get categories, active post
   componentWillMount() {
-    this.props.getSinglePost(this.props.location.hash.substr(0));
+    this.props.getSinglePost(this.props.location.hash.substr(1));
     this.props.getCategories();
+
     this.state = {
-      title: this.props.post.title,
-      body: this.props.post.body,
-      author: this.props.post.author,
-      category: this.props.post.category
+      title: '',
+      body: '',
+      author: '',
+      category: ''
     };
+  }
+
+  // update state to populate the form values with active post data
+  componentDidUpdate(prevProps) {
+    if(this.props.post !== prevProps.post) {
+      this.setState({
+        title: this.props.post.title,
+        body: this.props.post.body,
+        author: this.props.post.author,
+        category: this.props.post.category
+      });
+    }
   }
 
   // edit post on form submit
   handleSubmit(e) {
     e.preventDefault();
+    // ...
   }
 
   // renders <option> tag for each category
@@ -30,11 +44,9 @@ class EditPostForm extends Component {
         return;
       default:
         let catOptions = this.props.categories.map((cat) => {
-          return(
-            <option value={cat.name} key={cat.name}>{cat.name}</option>
-          );
+          return(<option value={cat.name} key={cat.name}>{cat.name}</option>);
         });
-      return catOptions;
+        return catOptions;
     }
   }
 
@@ -42,9 +54,7 @@ class EditPostForm extends Component {
   render() {
     const post = this.props.post;
     if(!post) {
-      return (
-        <div>NO POST IS SELECTED</div>
-      );
+      return (<div>NO POST IS SELECTED</div>);
     }
 
     return (
@@ -74,13 +84,15 @@ class EditPostForm extends Component {
   }
 }
 
+// map categories and active post to props
 function mapStateToProps(state) {
   return {
     categories: state.categories,
-    post: state.posts[0]
+    post: state.activePost
   };
 }
 
+// map actions for fetching categories, single post and editing a post to props
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ getCategories, getSinglePost }, dispatch);
 }
