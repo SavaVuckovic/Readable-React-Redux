@@ -2,6 +2,7 @@ export const GET_ALL_POSTS = 'GET_ALL_POSTS';
 export const GET_CATEGORY_POSTS = 'GET_CATEGORY_POSTS';
 export const GET_SINGLE_POST = 'GET_SINGLE_POST';
 export const ADD_POST = 'ADD_POST';
+export const DELETE_POST = 'DELETE_POST';
 
 // root URL and headers
 const ROOT_URL = 'http://localhost:3001';
@@ -49,6 +50,27 @@ export function addPost(title, body, author, category) {
         dispatch({
           type: ADD_POST,
           payload: res.data
+        });
+      });
+  };
+}
+
+// delete post
+export function deletePost(id) {
+  let request = fetch(`${ROOT_URL}/posts/${id}`, {
+    headers: {
+      'Authorization': 'Something Random'
+    },
+    method: 'DELETE'
+  });
+
+  return (dispatch) => {
+    request
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch({
+          type: DELETE_POST,
+          payload: id
         });
       });
   };

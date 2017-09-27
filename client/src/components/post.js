@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from './modal';
 import moment from 'moment';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { deletePost } from '../actions';
 
 class Post extends Component {
   // show modal
@@ -21,8 +24,9 @@ class Post extends Component {
   }
 
   // delete post
-  deletePost() {
-    console.log('delete called');
+  deletePost(id, deletePost, modal) {
+    deletePost(id);
+    modal.modalTarget.style.display = 'none';
   }
 
   // render individual post in postlist
@@ -42,7 +46,7 @@ class Post extends Component {
             onClick={this.hideDeleteModal.bind(this)} >Cancel</button>
           <button
             className="delete-btn"
-            onClick={this.deletePost}>Delete</button>
+            onClick={() => this.deletePost(post.id, this.props.deletePost, this.refs.deleteModal)}>Delete</button>
           <div className="clearfix"></div>
         </Modal>
 
@@ -86,4 +90,9 @@ class Post extends Component {
   }
 }
 
-export default Post;
+// map delete post action to props
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ deletePost }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(Post);

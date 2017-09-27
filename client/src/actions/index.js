@@ -6,7 +6,8 @@ export {
   GET_ALL_POSTS,
   GET_CATEGORY_POSTS,
   GET_SINGLE_POST,
-  ADD_POST
+  ADD_POST,
+  DELETE_POST
 } from './postactions';
 
 // export comment action types
@@ -24,6 +25,7 @@ export {
   getAllPosts,
   getCategoryPosts,
   getSinglePost,
+  deletePost
 } from './postactions';
 
 // export comment actions
