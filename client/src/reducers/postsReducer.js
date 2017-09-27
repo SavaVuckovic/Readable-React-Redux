@@ -13,7 +13,7 @@ export function postsReducer(state = [], action) {
       let newState = state.filter((post) => {
         return post.id !== action.payload;
       });
-      return newState
+      return newState;
     default:
       return state;
   }

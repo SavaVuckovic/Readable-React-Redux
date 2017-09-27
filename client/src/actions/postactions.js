@@ -22,6 +22,54 @@ function guid() {
   return s4() + s4() + s4() + s4() + s4();
 }
 
+
+// fetch posts from the server
+export function getAllPosts() {
+  let request = fetch(`${ROOT_URL}/posts`, headers);
+  return (dispatch) => {
+    request
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch({
+          type: GET_ALL_POSTS,
+          payload: data
+        });
+      });
+  };
+}
+
+// fetch posts for specific category
+export function getCategoryPosts(category) {
+  let request = fetch(`${ROOT_URL}/${category}/posts`, headers);
+
+  return (dispatch) => {
+    request
+    .then((res) => res.json())
+    .then((data) => {
+      dispatch({
+        type: GET_CATEGORY_POSTS,
+        payload: data
+      });
+    });
+  };
+}
+
+// fetch single post
+export function getSinglePost(id) {
+  let request = fetch(`${ROOT_URL}/posts/${id}`, headers);
+
+  return (dispatch) => {
+    request
+    .then((res) => res.json())
+    .then((data) => {
+      dispatch({
+        type: GET_SINGLE_POST,
+        payload: data
+      });
+    });
+  };
+}
+
 // add post
 export function addPost(title, body, author, category) {
   const postObj = {
@@ -73,52 +121,5 @@ export function deletePost(id) {
           payload: id
         });
       });
-  };
-}
-
-// fetch posts from the server
-export function getAllPosts() {
-  let request = fetch(`${ROOT_URL}/posts`, headers);
-  return (dispatch) => {
-    request
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({
-          type: GET_ALL_POSTS,
-          payload: data
-        });
-      });
-  };
-}
-
-// fetch posts for specific category
-export function getCategoryPosts(category) {
-  let request = fetch(`${ROOT_URL}/${category}/posts`, headers);
-
-  return (dispatch) => {
-    request
-    .then((res) => res.json())
-    .then((data) => {
-      dispatch({
-        type: GET_CATEGORY_POSTS,
-        payload: data
-      });
-    });
-  };
-}
-
-// fetch single post
-export function getSinglePost(id) {
-  let request = fetch(`${ROOT_URL}/posts/${id}`, headers);
-
-  return (dispatch) => {
-    request
-    .then((res) => res.json())
-    .then((data) => {
-      dispatch({
-        type: GET_SINGLE_POST,
-        payload: data
-      });
-    });
   };
 }

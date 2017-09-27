@@ -32,9 +32,7 @@ class CreatePostForm extends Component {
         return;
       default:
         let catOptions = this.props.categories.map((cat) => {
-          return(
-            <option value={cat.name} key={cat.name}>{cat.name}</option>
-          );
+          return(<option value={cat.name} key={cat.name}>{cat.name}</option>);
         });
       return catOptions;
     }

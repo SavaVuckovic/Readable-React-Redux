@@ -1,5 +1,6 @@
 export const GET_COMMENTS = 'GET_COMMENTS';
 export const ADD_COMMENT = 'ADD_COMMENT';
+export const DELETE_COMMENT = 'DELETE_COMMENT';
 
 // root URL and headers
 const ROOT_URL = 'http://localhost:3001';
@@ -63,6 +64,27 @@ export function addComment(author, body, postID) {
         dispatch({
           type: ADD_COMMENT,
           payload: data
+        });
+      });
+  };
+}
+
+// delete comment
+export function deleteComment(id) {
+  let request = fetch(`${ROOT_URL}/comments/${id}`, {
+    headers: {
+      'Authorization': 'Something Random'
+    },
+    method: 'DELETE'
+  });
+
+  return (dispatch) => {
+    request
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch({
+          type: DELETE_COMMENT,
+          payload: id
         });
       });
   };

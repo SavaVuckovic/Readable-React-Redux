@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getSinglePost } from '../actions';
-import { Link } from 'react-router-dom';
+import { getSinglePost, deletePost } from '../actions';
+import { Link, withRouter } from 'react-router-dom';
 import Modal from './modal';
 import AddCommentForm from './addcommentform';
 
@@ -46,8 +46,9 @@ class FullPost extends Component {
   }
 
   // delete post
-  deletePost() {
-    console.log('delete called');
+  deletePost(id, deletePost) {
+    deletePost(id);
+    this.props.history.push('/');
   }
 
   // render a post with all related information
@@ -79,7 +80,7 @@ class FullPost extends Component {
             onClick={this.hideDeleteModal.bind(this)} >Cancel</button>
           <button
             className="delete-btn"
-            onClick={this.deletePost}>Delete</button>
+            onClick={() => this.deletePost(this.props.post.id, this.props.deletePost)}>Delete</button>
           <div className="clearfix"></div>
         </Modal>
 
@@ -140,9 +141,9 @@ function mapStateToProps(state) {
   };
 }
 
-// map action for fetching a post to props
+// map action for fetching and deleting a post to props
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getSinglePost }, dispatch);
+  return bindActionCreators({ getSinglePost, deletePost }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FullPost);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(FullPost));

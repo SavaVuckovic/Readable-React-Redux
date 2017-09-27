@@ -12,6 +12,21 @@
   height: 70px;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
+  position: relative;
+}
+
+.comment-header-controlls {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+}
+
+.comment-header-controlls i {
+  margin: 0 5px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #333;
 }
 
 .comment-img {

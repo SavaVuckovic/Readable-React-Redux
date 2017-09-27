@@ -13,7 +13,8 @@ export {
 // export comment action types
 export {
   GET_COMMENTS,
-  ADD_COMMENT
+  ADD_COMMENT,
+  DELETE_COMMENT
 } from './commentactions';
 
 // export category actions
@@ -31,5 +32,6 @@ export {
 // export comment actions
 export {
   getComments,
-  addComment
+  addComment,
+  deleteComment
 } from './commentactions'

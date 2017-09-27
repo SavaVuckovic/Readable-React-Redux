@@ -22,6 +22,30 @@ const defaultData = {
     category: 'redux',
     voteScore: -5,
     deleted: false
+  },
+  "39782e5ae92c1c920bfd": {
+    id: '39782e5ae92c1c920bfd',
+    timestamp: 1506541176930,
+    title: 'Self-Driving Cars for Everyone!',
+    body: `With just minimal programming experience, you can learn the essentials of building a
+      self-driving car. You’ll discover how to solve problems in both Python and C++
+      as you explore what makes self-driving cars possible. Plus, graduates earn
+      guaranteed admission into our career-ready Self-Driving Car Engineer Nanodegree program!`,
+    author: 'Anonymous',
+    category: 'udacity',
+    voteScore: 8,
+    deleted: false
+  },
+  "a839377e5c36efc567b6": {
+    id: 'a839377e5c36efc567b6',
+    timestamp: 1506541195882,
+    title: 'React Fiber (React 16) is out!',
+    body: `Some of the new features: faster server side renderer, return of MIT licence,
+      componentDidCatch lifecycle, custom element attributes, return multiple elements using an array...`,
+    author: 'anon',
+    category: 'react',
+    voteScore: 3,
+    deleted: false
   }
 }
 

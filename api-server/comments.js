@@ -22,7 +22,37 @@ const defaultData = {
     voteScore: -5,
     deleted: false,
     parentDeleted: false
-  }
+  },
+  "0f91eaa84724c9f480b5": {
+    id: '0f91eaa84724c9f480b5',
+    parentId: "6ni6ok3ym7mf1p33lnez",
+    timestamp: 1506542437133,
+    body: ':)',
+    author: 'somebody',
+    voteScore: 2,
+    deleted: false,
+    parentDeleted: false
+  },
+  "03c849e8db6e290b82f3": {
+    id: '03c849e8db6e290b82f3',
+    parentId: "39782e5ae92c1c920bfd",
+    timestamp: 1506542438581,
+    body: 'Lorem ipsum dolor sit amet, cpisici nglit anim id est laborum.',
+    author: 'Sava Vuckovic',
+    voteScore: 1,
+    deleted: false,
+    parentDeleted: false
+  },
+  "9d5ee7d2f75534801fd1": {
+    id: '9d5ee7d2f75534801fd1',
+    parentId: "a839377e5c36efc567b6",
+    timestamp: 1506542440205,
+    body: 'Can\'t wait to try it out!',
+    author: 'Sava',
+    voteScore: 4,
+    deleted: false,
+    parentDeleted: false
+  },
 }
 
 function getData (token) {
