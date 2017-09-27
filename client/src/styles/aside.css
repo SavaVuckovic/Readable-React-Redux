@@ -89,10 +89,20 @@
   }
 
   .page-controlls {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
   }
 
   .categories {
     margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .page-controlls {
+    margin-bottom: 10px;
+  }
+
+  .categories {
+    margin-bottom: 5px;
   }
 }

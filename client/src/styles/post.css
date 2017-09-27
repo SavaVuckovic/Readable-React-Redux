@@ -110,9 +110,21 @@
 
   .post-header-controlls {
     position: static;
-    display: block;
+    display: inline-block;
     margin: 0 0 10px;
     text-align: right;
+    float: right;
+  }
+
+  .post-header h2,
+  .post-header h3 {
+    font-size: 20px;
+    display: block;
+  }
+
+  .post-header-controlls i {
+    font-size: 15px;
+    margin: 0 6px;
   }
 
   .post-body {
@@ -122,7 +134,16 @@
 
 @media screen and (max-width: 350px) {
   .post {
-    margin-top: 0;
+    margin: 5px 0 10px;
+  }
+
+  .post-header {
+    padding: 5px;
+  }
+
+  .post-header h2,
+  .post-header h3 {
+    font-size: 17px;
   }
 
   .read-more {

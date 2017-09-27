@@ -71,6 +71,7 @@
   .comment-author {
     float: right;
     padding: 0;
+    float: left;
   }
 
   .comment-author h4 {
@@ -80,6 +81,7 @@
 
   .comment-author span {
     font-size: 12px;
+    margin-left: 0;
   }
 
   .comment-text p {
@@ -88,6 +90,10 @@
 }
 
 @media screen and (max-width: 180px) {
+  .comment-header {
+    padding-left: 10px;
+  }
+
   .comment-img {
     display: none;
   }

@@ -47,8 +47,6 @@ class Post extends Component {
         </Modal>
 
         <div className="post-header">
-          <h3>{post.title}</h3>
-          <p>Posted by {post.author} on {moment(post.timestamp).format('ddd MM. DD. YYYY.')}</p>
           <div className="post-header-controlls">
             <Link to={{
               pathname: '/posts/create_edit',
@@ -57,6 +55,9 @@ class Post extends Component {
             }}><i className="fa fa-pencil" aria-hidden="true"></i></Link>
             <i className="fa fa-trash" aria-hidden="true" onClick={this.showDeleteModal.bind(this)}></i>
           </div>
+          <h3>{post.title}</h3>
+          <p>Posted by {post.author} on {moment(post.timestamp).format('ddd MM. DD. YYYY.')}</p>
+          <div className="clearfix"></div>
         </div>
 
         <div className="post-body">
