@@ -60,7 +60,7 @@
 
 /* post footer */
 .post-footer {
-  padding: 5px;
+  padding: 5px 15px;
   background: #eee;
 }
 
@@ -158,6 +158,11 @@
   .post-header h2,
   .post-header h3 {
     font-size: 17px;
+  }
+
+  .post-footer {
+    padding: 5px;
+    background: #eee;
   }
 
   .single-post-footer {
