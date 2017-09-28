@@ -1,6 +1,8 @@
 export const GET_COMMENTS = 'GET_COMMENTS';
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
+export const UPVOTE_COMMENT = 'UPVOTE_COMMENT';
+export const DOWNVOTE_COMMENT = 'DOWNVOTE_COMMENT';
 
 // root URL and headers
 const ROOT_URL = 'http://localhost:3001';
@@ -85,6 +87,56 @@ export function deleteComment(id) {
         dispatch({
           type: DELETE_COMMENT,
           payload: id
+        });
+      });
+  };
+}
+
+// upvote comment
+export function upVoteComment(id) {
+  const myHeaders = new Headers({
+    'Content-Type': 'application/json',
+    'Authorization': 'Something Random'
+  });
+
+  let request = fetch(`${ROOT_URL}/comments/${id}`, {
+    headers: myHeaders,
+    method: 'POST',
+    body: JSON.stringify({ option: 'upVote' })
+  });
+
+  return (dispatch) => {
+    request
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch({
+          type: UPVOTE_COMMENT,
+          payload: data
+        });
+      });
+  };
+}
+
+// downvote comment
+export function downVoteComment(id) {
+  const myHeaders = new Headers({
+    'Content-Type': 'application/json',
+    'Authorization': 'Something Random'
+  });
+
+  let request = fetch(`${ROOT_URL}/comments/${id}`, {
+    headers: myHeaders,
+    method: 'POST',
+    body: JSON.stringify({ option: 'downVote' })
+  });
+
+  return (dispatch) => {
+    request
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch({
+          type: DOWNVOTE_COMMENT,
+          payload: data
         });
       });
   };

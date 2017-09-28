@@ -3,7 +3,7 @@ import moment from 'moment';
 import Modal from './modal';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { deleteComment } from '../actions';
+import { deleteComment, upVoteComment, downVoteComment } from '../actions';
 
 class Comment extends Component {
   // choose comment avatar image randomly
@@ -36,6 +36,8 @@ class Comment extends Component {
 
   // render a comment
   render() {
+    const comment = this.props.comment;
+
     return (
       <div className="comment">
 
@@ -48,7 +50,7 @@ class Comment extends Component {
             onClick={this.hideDeleteModal.bind(this)} >Cancel</button>
           <button
             className="delete-btn"
-            onClick={() => this.deleteComment(this.props.comment.id, this.props.deleteComment, this.refs.deleteModal)}>Delete</button>
+            onClick={() => this.deleteComment(comment.id, this.props.deleteComment, this.refs.deleteModal)}>Delete</button>
           <div className="clearfix"></div>
         </Modal>
 
@@ -61,17 +63,28 @@ class Comment extends Component {
             <img src={this.chooseImageRandomly()} alt="user" />
           </div>
           <div className="comment-author">
-            <h4>{this.props.comment.author}</h4>
-            <span>{moment(this.props.comment.timestamp).format('ddd MM. DD. YYYY.')}</span>
+            <h4>{comment.author}</h4>
+            <span>{moment(comment.timestamp).format('ddd MM. DD. YYYY.')}</span>
           </div>
         </div>
 
         <div className="comment-text">
-          {this.props.comment.body}
+          {comment.body}
         </div>
 
-        <div className="comment-controlls">
-          <span>some vote controlls here</span>
+        <div className="comment-footer">
+          <div className="comment-vote-score">votes: {comment.voteScore}</div>
+          <div className="comment-footer-controlls">
+            <div className="control">
+              <i className="fa fa-thumbs-up" aria-hidden="true"
+                onClick={() => this.props.upVoteComment(comment.id)}></i>
+            </div>
+            <div className="control">
+              <i className="fa fa-thumbs-down" aria-hidden="true"
+                onClick={() => this.props.downVoteComment(comment.id)}></i>
+            </div>
+          </div>
+          <div className="clearfix"></div>
         </div>
 
       </div>
@@ -81,7 +94,7 @@ class Comment extends Component {
 
 // map edit and delete comment actions to props
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ deleteComment }, dispatch);
+  return bindActionCreators({ deleteComment, upVoteComment, downVoteComment }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(Comment);

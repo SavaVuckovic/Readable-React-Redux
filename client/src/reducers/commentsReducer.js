@@ -1,7 +1,9 @@
 import {
   GET_COMMENTS,
   ADD_COMMENT,
-  DELETE_COMMENT
+  DELETE_COMMENT,
+  UPVOTE_COMMENT,
+  DOWNVOTE_COMMENT
 } from '../actions';
 
 export function commentsReducer(state = [], action) {
@@ -31,6 +33,12 @@ export function commentsReducer(state = [], action) {
         return comment.id !== action.payload;
       });
       return newState;
+    case UPVOTE_COMMENT:
+    case DOWNVOTE_COMMENT:
+      var oldComments = state.filter((comm) => {
+        return comm.id !== action.payload.id;
+      });
+      return [ action.payload, ...oldComments ];
     default:
       return state;
   }

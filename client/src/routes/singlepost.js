@@ -2,11 +2,17 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getSinglePost, deletePost, getComments } from '../actions';
 import { Link } from 'react-router-dom';
 import Modal from '../components/modal';
 import AddCommentForm from '../components/addcommentform';
 import Comments from '../components/comments';
+import {
+  getSinglePost,
+  deletePost,
+  getComments,
+  upVotePost,
+  downVotePost
+} from '../actions';
 
 // render single post page
 class SinglePost extends Component {
@@ -118,10 +124,12 @@ class SinglePost extends Component {
 
             <div className="post-footer-controlls">
               <div className="control">
-                <i className="fa fa-thumbs-up" aria-hidden="true"></i>
+                <i className="fa fa-thumbs-up" aria-hidden="true"
+                onClick={() => this.props.upVotePost(post.id)}></i>
               </div>
               <div className="control">
-                <i className="fa fa-thumbs-down" aria-hidden="true"></i>
+                <i className="fa fa-thumbs-down" aria-hidden="true"
+                onClick={() => this.props.downVotePost(post.id)}></i>
               </div>
               <div className="control">
                 <i className="fa fa-comments" aria-hidden="true"
@@ -155,7 +163,13 @@ function mapStateToProps(state, ownProps) {
 
 // map action for fetching and deleting a post, and getting comments to props
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getSinglePost, deletePost, getComments }, dispatch);
+  return bindActionCreators({
+    getSinglePost,
+    deletePost,
+    getComments,
+    upVotePost,
+    downVotePost
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SinglePost);

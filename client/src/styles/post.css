@@ -24,6 +24,11 @@
   cursor: pointer;
 }
 
+.post-header h2:hover,
+.post-header h3:hover {
+  text-shadow: 0 0 3px yellow;
+}
+
 .main-link-to-post {
   color: #fff;
   text-decoration: none;

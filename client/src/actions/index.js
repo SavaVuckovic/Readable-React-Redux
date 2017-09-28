@@ -16,7 +16,9 @@ export {
 export {
   GET_COMMENTS,
   ADD_COMMENT,
-  DELETE_COMMENT
+  DELETE_COMMENT,
+  UPVOTE_COMMENT,
+  DOWNVOTE_COMMENT
 } from './commentactions';
 
 // export category actions
@@ -37,5 +39,7 @@ export {
 export {
   getComments,
   addComment,
-  deleteComment
+  deleteComment,
+  upVoteComment,
+  downVoteComment
 } from './commentactions'

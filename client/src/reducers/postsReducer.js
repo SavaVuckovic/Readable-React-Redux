@@ -1,7 +1,9 @@
 import {
   GET_ALL_POSTS,
   GET_CATEGORY_POSTS,
-  DELETE_POST
+  DELETE_POST,
+  UPVOTE_POST,
+  DOWNVOTE_POST
 } from '../actions';
 
 export function postsReducer(state = [], action) {
@@ -10,10 +12,16 @@ export function postsReducer(state = [], action) {
     case GET_CATEGORY_POSTS:
       return action.payload;
     case DELETE_POST:
-      let newState = state.filter((post) => {
+      var newState = state.filter((post) => {
         return post.id !== action.payload;
       });
       return newState;
+    case UPVOTE_POST:
+    case DOWNVOTE_POST:
+      var oldPosts = state.filter((post) => {
+        return post.id !== action.payload.id;
+      });
+      return [ action.payload, ...oldPosts ];
     default:
       return state;
   }

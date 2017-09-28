@@ -62,9 +62,19 @@
   padding: 15px;
 }
 
-.comment-controlls {
-  padding: 15px;
+.comment-footer {
+  padding: 0 15px;
   background: #eee;
+  font-size: 14px;
+}
+
+.comment-vote-score {
+  float: left;
+  margin: 5px 0;
+}
+
+.comment-footer-controlls {
+  float: right;
 }
 
 /* smaller screens */
@@ -102,6 +112,11 @@
 
   .comment-text p {
     font-size: 14px;
+  }
+
+  .comment-footer {
+    padding: 0 5px;
+    font-size: 12px;
   }
 }
 

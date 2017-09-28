@@ -112,7 +112,12 @@ function mapStateToProps({ comments }, ownProps) {
 
 // map delete post action to props
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ deletePost, getComments, upVotePost, downVotePost }, dispatch);
+  return bindActionCreators({
+    deletePost,
+    getComments, 
+    upVotePost,
+    downVotePost
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post);
