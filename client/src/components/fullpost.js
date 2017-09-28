@@ -106,23 +106,25 @@ class FullPost extends Component {
             {post.body}
           </div>
 
-          <div className="single-post-controls">
-            <div className="control">
-              <i className="fa fa-thumbs-up" aria-hidden="true"></i>
-              <span>13</span>
-            </div>
-            <div className="control">
-              <i className="fa fa-thumbs-down" aria-hidden="true"></i>
-              <span>2</span>
-            </div>
-            <div className="control">
-              <i className="fa fa-comments" aria-hidden="true"></i>
-              <span>5</span>
+          <div className="single-post-footer">
+
+            <div className="post-footer-info">
+              <div>votes: {post.voteScore}</div>
+              <div>comments: 566567</div>
             </div>
 
-            <div
-              id="addcomment"
-              onClick={this.showCommentModal.bind(this)}>Write a comment</div>
+            <div className="post-footer-controlls">
+              <div className="control">
+                <i className="fa fa-thumbs-up" aria-hidden="true"></i>
+              </div>
+              <div className="control">
+                <i className="fa fa-thumbs-down" aria-hidden="true"></i>
+              </div>
+              <div className="control">
+                <i className="fa fa-comments" aria-hidden="true"
+                  onClick={this.showCommentModal.bind(this)}></i>
+              </div>
+            </div>
 
             <div className="clearfix"></div>
           </div>

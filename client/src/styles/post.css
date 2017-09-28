@@ -58,54 +58,63 @@
   background: #fff;
 }
 
-/* post controlls */
-.post-controls {
-  padding: 10px 15px;
+/* post footer */
+.post-footer {
+  padding: 5px;
   background: #eee;
 }
 
-.single-post-controls {
-  padding: 15px 20px;
+.single-post-footer {
+  padding: 5px 15px;
   border: 1px solid #ddd;
   background: #eee;
 }
 
-.control {
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.control i {
-  margin: 0 5px;
-  font-size: 17px;
-  cursor: pointer;
-}
-
-.control i:hover {
-  color: #764abc;
-}
-
-.control span {
+.post-footer-info {
+  float: left;
   font-size: 14px;
 }
 
-.read-more {
+.post-footer-controlls {
   float: right;
+}
+
+.control {
+  display: inline-block;
+  margin: 5px;
+}
+
+.control .fa {
+  margin: 0 3px;
+  font-size: 17px;
+  cursor: pointer;
   text-decoration: none;
-  font-weight: bold;
+}
+
+.fa-thumbs-up {
+  color: #1659db;
+}
+
+.fa-thumbs-up:hover {
+  color: #1194f4;
+}
+
+.fa-thumbs-down {
+  color: #6e0909;
+}
+
+.fa-thumbs-down:hover {
+  color: #f03232;
+}
+
+.fa-comments {
   color: #764abc;
 }
 
-#addcomment {
-  float: right;
-  font-size: 15px;
-  font-weight: bold;
-  color: #444;
+.fa-comments:hover {
+  color: #bd3cf1;
 }
 
-#addcomment:hover {
-  color: #764abc;
-}
 
 /* smaller screens */
 @media screen and (max-width: 765px) {
@@ -151,10 +160,16 @@
     font-size: 17px;
   }
 
-  .read-more {
-    float: none;
-    display: block;
-    margin-top: 10px;
-    text-align: center;
+  .single-post-footer {
+    padding: 5px;
+  }
+
+  .post-footer-info {
+    font-size: 12px;
+  }
+
+  .control .fa {
+    font-size: 15px;
+    margin: 0 2px;
   }
 }

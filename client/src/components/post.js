@@ -73,12 +73,25 @@ class Post extends Component {
           {post.body}
         </div>
 
-        <div className="post-controls">
+        <div className="post-footer">
 
-          <div>votes: {post.voteScore}</div>
-          <div>comments: {this.props.comments.length}</div>
+          <div className="post-footer-info">
+            <div>votes: {post.voteScore}</div>
+            <div>comments: {this.props.comments.length}</div>
+          </div>
 
-          <Link className="read-more" to={postUrl}>more</Link>
+          <div className="post-footer-controlls">
+            <div className="control">
+              <i className="fa fa-thumbs-up" aria-hidden="true"></i>
+            </div>
+            <div className="control">
+              <i className="fa fa-thumbs-down" aria-hidden="true"></i>
+            </div>
+            <div className="control">
+              <Link to={postUrl} className="fa fa-comments" aria-hidden="true"></Link>
+            </div>
+          </div>
+
           <div className="clearfix"></div>
         </div>
 
@@ -101,18 +114,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post);
-
-/*
-<div className="control">
-  <i className="fa fa-thumbs-up" aria-hidden="true"></i>
-  <span>13</span>
-</div>
-<div className="control">
-  <i className="fa fa-thumbs-down" aria-hidden="true"></i>
-  <span>2</span>
-</div>
-<div className="control">
-  <i className="fa fa-comments" aria-hidden="true"></i>
-  <span>5</span>
-</div>
-*/
