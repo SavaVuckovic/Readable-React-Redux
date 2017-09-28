@@ -3,6 +3,8 @@ export const GET_CATEGORY_POSTS = 'GET_CATEGORY_POSTS';
 export const GET_SINGLE_POST = 'GET_SINGLE_POST';
 export const ADD_POST = 'ADD_POST';
 export const DELETE_POST = 'DELETE_POST';
+export const UPVOTE_POST = 'UPVOTE_POST';
+export const DOWNVOTE_POST = 'DOWNVOTE_POST';
 
 // root URL and headers
 const ROOT_URL = 'http://localhost:3001';
@@ -121,5 +123,55 @@ export function deletePost(id) {
           payload: id
         });
       });
+  };
+}
+
+// upvote a post
+export function upVotePost(id) {
+  const myHeaders = new Headers({
+    'Content-Type': 'application/json',
+    'Authorization': 'Something Random'
+  });
+
+  let request = fetch(`${ROOT_URL}/posts/${id}`, {
+    headers: myHeaders,
+    method: 'POST',
+    body: JSON.stringify({ option: 'upVote' })
+  });
+
+  return (dispatch) => {
+    request
+    .then((res) => res.json())
+    .then((data) => {
+      dispatch({
+        type: UPVOTE_POST,
+        payload: data
+      });
+    });
+  };
+}
+
+// downvote a post
+export function downVotePost(id) {
+  const myHeaders = new Headers({
+    'Content-Type': 'application/json',
+    'Authorization': 'Something Random'
+  });
+
+  let request = fetch(`${ROOT_URL}/posts/${id}`, {
+    headers: myHeaders,
+    method: 'POST',
+    body: JSON.stringify({ option: 'downVote' })
+  });
+
+  return (dispatch) => {
+    request
+    .then((res) => res.json())
+    .then((data) => {
+      dispatch({
+        type: DOWNVOTE_POST,
+        payload: data
+      });
+    });
   };
 }

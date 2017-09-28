@@ -4,7 +4,7 @@ import Modal from './modal';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { deletePost, getComments } from '../actions';
+import { deletePost, getComments, upVotePost, downVotePost } from '../actions';
 
 class Post extends Component {
   // fetch comments for this post to display their number
@@ -82,10 +82,12 @@ class Post extends Component {
 
           <div className="post-footer-controlls">
             <div className="control">
-              <i className="fa fa-thumbs-up" aria-hidden="true"></i>
+              <i className="fa fa-thumbs-up" aria-hidden="true"
+                onClick={() => this.props.upVotePost(post.id)}></i>
             </div>
             <div className="control">
-              <i className="fa fa-thumbs-down" aria-hidden="true"></i>
+              <i className="fa fa-thumbs-down" aria-hidden="true"
+                onClick={() => this.props.downVotePost(post.id)}></i>
             </div>
             <div className="control">
               <Link to={postUrl} className="fa fa-comments" aria-hidden="true"></Link>
@@ -110,7 +112,7 @@ function mapStateToProps({ comments }, ownProps) {
 
 // map delete post action to props
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ deletePost, getComments }, dispatch);
+  return bindActionCreators({ deletePost, getComments, upVotePost, downVotePost }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post);

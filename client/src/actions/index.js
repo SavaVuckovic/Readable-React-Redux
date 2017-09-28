@@ -7,7 +7,9 @@ export {
   GET_CATEGORY_POSTS,
   GET_SINGLE_POST,
   ADD_POST,
-  DELETE_POST
+  DELETE_POST,
+  UPVOTE_POST,
+  DOWNVOTE_POST
 } from './postactions';
 
 // export comment action types
@@ -26,7 +28,9 @@ export {
   getAllPosts,
   getCategoryPosts,
   getSinglePost,
-  deletePost
+  deletePost,
+  upVotePost,
+  downVotePost
 } from './postactions';
 
 // export comment actions

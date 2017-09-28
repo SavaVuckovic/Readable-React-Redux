@@ -19,6 +19,10 @@ class AddCommentForm extends Component {
     e.preventDefault();
     this.props.hideModal();
     this.props.addComment(this.state.author, this.state.body, this.props.postID);
+    this.setState({
+      author: '',
+      body: ''
+    });
   }
 
   // render a form for adding a comment

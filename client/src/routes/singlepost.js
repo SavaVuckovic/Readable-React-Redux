@@ -113,7 +113,7 @@ class SinglePost extends Component {
 
             <div className="post-footer-info">
               <div>votes: {post.voteScore}</div>
-              <div>comments: 566567</div>
+              <div>comments: {this.props.comments.length}</div>
             </div>
 
             <div className="post-footer-controlls">
