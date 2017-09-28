@@ -76,7 +76,7 @@ class Post extends Component {
         <div className="post-controls">
 
           <div>votes: {post.voteScore}</div>
-          <div>comments: {post.voteScore}</div>
+          <div>comments: {this.props.comments.length}</div>
 
           <Link className="read-more" to={postUrl}>more</Link>
           <div className="clearfix"></div>
@@ -87,12 +87,20 @@ class Post extends Component {
   }
 }
 
+// map comments that belong to this post to props
+function mapStateToProps({ comments }, ownProps) {
+  const thisPostComments = comments.filter((comm) => {
+    return comm.parentId === ownProps.post.id;
+  });
+  return { comments: thisPostComments };
+}
+
 // map delete post action to props
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ deletePost, getComments }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(Post);
+export default connect(mapStateToProps, mapDispatchToProps)(Post);
 
 /*
 <div className="control">

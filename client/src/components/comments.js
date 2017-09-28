@@ -25,9 +25,12 @@ class Comments extends Component {
   }
 }
 
-// map comments from api server to props
-function mapStateToProps({ comments }) {
-  return { comments };
+// map comments that belong to this post to props
+function mapStateToProps({ comments }, ownProps) {
+  const thisPostComments = comments.filter((comm) => {
+    return comm.parentId === ownProps.postID;
+  });
+  return { comments: thisPostComments };
 }
 
 // map action for fetching comments to props
