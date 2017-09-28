@@ -7,8 +7,9 @@ export function activePostReducer(state = {}, action) {
     case DELETE_POST:
       if(state.id === action.payload) {
         return {};
+      } else {
+        return state;
       }
-      break;
     default:
       return state;
   }

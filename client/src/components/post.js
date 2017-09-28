@@ -4,9 +4,14 @@ import Modal from './modal';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { deletePost } from '../actions';
+import { deletePost, getComments } from '../actions';
 
 class Post extends Component {
+  // fetch comments for this post to display their number
+  componentWillMount() {
+    this.props.getComments(this.props.post.id);
+  }
+
   // show modal
   showDeleteModal() {
     let modal = this.refs.deleteModal.modalTarget;
@@ -59,7 +64,7 @@ class Post extends Component {
             }}><i className="fa fa-pencil" aria-hidden="true"></i></Link>
             <i className="fa fa-trash" aria-hidden="true" onClick={this.showDeleteModal.bind(this)}></i>
           </div>
-          <h3>{post.title}</h3>
+          <Link className="main-link-to-post" to={postUrl}><h3>{post.title}</h3></Link>
           <p>Posted by {post.author} on {moment(post.timestamp).format('ddd MM. DD. YYYY.')}</p>
           <div className="clearfix"></div>
         </div>
@@ -69,19 +74,11 @@ class Post extends Component {
         </div>
 
         <div className="post-controls">
-          <div className="control">
-            <i className="fa fa-thumbs-up" aria-hidden="true"></i>
-            <span>13</span>
-          </div>
-          <div className="control">
-            <i className="fa fa-thumbs-down" aria-hidden="true"></i>
-            <span>2</span>
-          </div>
-          <div className="control">
-            <i className="fa fa-comments" aria-hidden="true"></i>
-            <span>5</span>
-          </div>
-          <Link className="read-more" to={postUrl}>read more</Link>
+
+          <div>votes: {post.voteScore}</div>
+          <div>comments: {post.voteScore}</div>
+
+          <Link className="read-more" to={postUrl}>more</Link>
           <div className="clearfix"></div>
         </div>
 
@@ -92,7 +89,22 @@ class Post extends Component {
 
 // map delete post action to props
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ deletePost }, dispatch);
+  return bindActionCreators({ deletePost, getComments }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(Post);
+
+/*
+<div className="control">
+  <i className="fa fa-thumbs-up" aria-hidden="true"></i>
+  <span>13</span>
+</div>
+<div className="control">
+  <i className="fa fa-thumbs-down" aria-hidden="true"></i>
+  <span>2</span>
+</div>
+<div className="control">
+  <i className="fa fa-comments" aria-hidden="true"></i>
+  <span>5</span>
+</div>
+*/

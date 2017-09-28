@@ -24,6 +24,11 @@
   cursor: pointer;
 }
 
+.main-link-to-post {
+  color: #fff;
+  text-decoration: none;
+}
+
 .post-header p {
   margin: 5px 0;
   font-size: 14px;
