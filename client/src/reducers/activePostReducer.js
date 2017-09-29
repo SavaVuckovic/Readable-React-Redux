@@ -1,4 +1,9 @@
-import { GET_SINGLE_POST, DELETE_POST } from '../actions';
+import {
+  GET_SINGLE_POST,
+  DELETE_POST,
+  UPVOTE_POST,
+  DOWNVOTE_POST
+} from '../actions';
 
 export function activePostReducer(state = {}, action) {
   switch(action.type) {
@@ -7,6 +12,13 @@ export function activePostReducer(state = {}, action) {
     case DELETE_POST:
       if(state.id === action.payload) {
         return {};
+      } else {
+        return state;
+      }
+    case UPVOTE_POST:
+    case DOWNVOTE_POST:
+      if(action.payload.id === state.id) {
+        return action.payload;
       } else {
         return state;
       }

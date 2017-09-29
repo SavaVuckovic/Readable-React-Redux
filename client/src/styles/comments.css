@@ -77,6 +77,26 @@
   float: right;
 }
 
+
+/* CSSTransitionGroup animations */
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: 0.4s ease-in all;
+}
+
+.fade-leave {
+  opacity: 1;
+}
+
+.fade-leave-active {
+  opacity: 0;
+  transition: 0.4s ease-out all;
+}
+
 /* smaller screens */
 @media screen and (max-width: 765px) {
   .comment-text {

@@ -4,18 +4,17 @@ import { bindActionCreators } from 'redux';
 import { editComment } from '../actions';
 
 class EditCommentForm extends Component {
-  // lolz
+  // set state to populate the textarea
   constructor(props) {
     super(props);
     this.state = { body: this.props.body };
   }
 
-
   // edit post on form submit
   handleSubmit(e) {
     e.preventDefault();
+    this.props.hideModal();
     this.props.editComment(this.props.id, this.state.body);
-    //this.props.history.push('/');
   }
 
   // render a form for editing a post

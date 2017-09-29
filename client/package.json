@@ -5,9 +5,11 @@
   "dependencies": {
     "moment": "^2.18.1",
     "react": "^15.6.1",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.13",
+    "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
@@ -15,8 +17,5 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "devDependencies": {
-    "redux-devtools-extension": "^2.13.2"
   }
 }

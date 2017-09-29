@@ -28,7 +28,7 @@ class PostList extends Component {
       case null:
         return;
       default:
-        // sort posts
+        // sort posts by timestamp or votes
         var sortedPosts = (posts, sortBy) => {
           if(sortBy === 'timestamp') {
             var sortedByTime = posts.sort((a, b) => {
@@ -42,8 +42,7 @@ class PostList extends Component {
             return sortedByVotes;
           }
         }
-
-
+        // render them
         let posts = sortedPosts(this.props.posts, this.props.sortBy).map((post) => {
           return (<Post key={post.id} post={post} />);
         });
@@ -61,7 +60,7 @@ class PostList extends Component {
   }
 }
 
-// map posts from api server to props
+// map posts and sort criteria to props
 function mapStateToProps({ posts, sortBy }) {
   return { posts, sortBy };
 }

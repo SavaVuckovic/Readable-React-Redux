@@ -6,7 +6,7 @@ import { getSinglePost, editPost } from '../actions';
 import { withRouter } from 'react-router-dom';
 
 class EditPostForm extends Component {
-  // get categories, active post
+  // get post to edit & create state
   componentWillMount() {
     this.props.getSinglePost(this.props.location.hash.substr(1));
 
@@ -70,12 +70,12 @@ class EditPostForm extends Component {
   }
 }
 
-// map categories and active post to props
+// map active post to props
 function mapStateToProps({ activePost }) {
   return { post: activePost };
 }
 
-// map actions for fetching categories, single post and editing a post to props
+// map actions for fetching single post and editing a post to props
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ getSinglePost, editPost }, dispatch);
 }

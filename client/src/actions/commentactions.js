@@ -1,5 +1,5 @@
-export const GET_COMMENTS = 'GET_COMMENTS';
 export const ADD_COMMENT = 'ADD_COMMENT';
+export const GET_COMMENTS = 'GET_COMMENTS';
 export const EDIT_COMMENT = 'EDIT_COMMENT';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const UPVOTE_COMMENT = 'UPVOTE_COMMENT';
@@ -7,11 +7,17 @@ export const DOWNVOTE_COMMENT = 'DOWNVOTE_COMMENT';
 
 // root URL and headers
 const ROOT_URL = 'http://localhost:3001';
-const headers = {
-  headers: {
-    Authorization: 'Something Random'
-  }
-}
+
+// regular headers
+const headers = new Headers({
+  'Authorization': 'Something Random'
+});
+
+// JSON headers
+const jsonHeaders = new Headers({
+  'Content-Type': 'application/json',
+  'Authorization': 'Something Random'
+});
 
 // generate UUID
 function guid() {
@@ -21,22 +27,6 @@ function guid() {
       .substring(1);
   }
   return s4() + s4() + s4() + s4() + s4();
-}
-
-// fetch comments
-export function getComments(id) {
-  let request = fetch(`${ROOT_URL}/posts/${id}/comments`, headers);
-
-  return (dispatch) => {
-    request
-    .then((res) => res.json())
-    .then((data) => {
-      dispatch({
-        type: GET_COMMENTS,
-        payload: data
-      });
-    });
-  };
 }
 
 // add a comment
@@ -49,13 +39,8 @@ export function addComment(author, body, postID) {
     parentId: postID
   };
 
-  const myHeaders = new Headers({
-    'Content-Type': 'application/json',
-    'Authorization': 'Something Random'
-  });
-
   let request = fetch(`${ROOT_URL}/comments`, {
-    headers: myHeaders,
+    headers: jsonHeaders,
     method: 'POST',
     body: JSON.stringify(commentObj)
   });
@@ -72,20 +57,31 @@ export function addComment(author, body, postID) {
   };
 }
 
+// fetch comments
+export function getComments(id) {
+  let request = fetch(`${ROOT_URL}/posts/${id}/comments`, { headers });
+
+  return (dispatch) => {
+    request
+    .then((res) => res.json())
+    .then((data) => {
+      dispatch({
+        type: GET_COMMENTS,
+        payload: data
+      });
+    });
+  };
+}
+
 // edit comment
 export function editComment(id, body) {
-  const myHeaders = new Headers({
-    'Content-Type': 'application/json',
-    'Authorization': 'Something Random'
-  });
-
   const commentObj = {
     timestamp: Date.now(),
     body
   };
 
   let request = fetch(`${ROOT_URL}/comments/${id}`, {
-    headers: myHeaders,
+    headers: jsonHeaders,
     method: 'PUT',
     body: JSON.stringify(commentObj)
   });
@@ -105,9 +101,7 @@ export function editComment(id, body) {
 // delete comment
 export function deleteComment(id) {
   let request = fetch(`${ROOT_URL}/comments/${id}`, {
-    headers: {
-      'Authorization': 'Something Random'
-    },
+    headers,
     method: 'DELETE'
   });
 
@@ -125,13 +119,8 @@ export function deleteComment(id) {
 
 // upvote comment
 export function upVoteComment(id) {
-  const myHeaders = new Headers({
-    'Content-Type': 'application/json',
-    'Authorization': 'Something Random'
-  });
-
   let request = fetch(`${ROOT_URL}/comments/${id}`, {
-    headers: myHeaders,
+    headers: jsonHeaders,
     method: 'POST',
     body: JSON.stringify({ option: 'upVote' })
   });
@@ -150,13 +139,8 @@ export function upVoteComment(id) {
 
 // downvote comment
 export function downVoteComment(id) {
-  const myHeaders = new Headers({
-    'Content-Type': 'application/json',
-    'Authorization': 'Something Random'
-  });
-
   let request = fetch(`${ROOT_URL}/comments/${id}`, {
-    headers: myHeaders,
+    headers: jsonHeaders,
     method: 'POST',
     body: JSON.stringify({ option: 'downVote' })
   });

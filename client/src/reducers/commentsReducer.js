@@ -1,6 +1,7 @@
 import {
-  GET_COMMENTS,
   ADD_COMMENT,
+  GET_COMMENTS,
+  EDIT_COMMENT,
   DELETE_COMMENT,
   UPVOTE_COMMENT,
   DOWNVOTE_COMMENT
@@ -8,6 +9,8 @@ import {
 
 export function commentsReducer(state = [], action) {
   switch(action.type) {
+    case ADD_COMMENT:
+      return [ ...state, action.payload ];
     case GET_COMMENTS:
       if(state.length === 0) {
         return [ ...action.payload ];
@@ -26,8 +29,11 @@ export function commentsReducer(state = [], action) {
         // return old state and new comments if any
         return [ ...state, ...newComments ]
       }
-    case ADD_COMMENT:
-      return [ ...state, action.payload ];
+    case EDIT_COMMENT:
+      var old = state.filter((comment) => {
+        return comment.id !== action.payload.id;
+      });
+      return [ ...old, action.payload ];
     case DELETE_COMMENT:
       var newState = state.filter((comment) => {
         return comment.id !== action.payload;

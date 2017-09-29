@@ -64,9 +64,7 @@ class SinglePost extends Component {
   render() {
     const post = this.props.post;
     if(!post) {
-      return (
-        <div>Loading...</div>
-      );
+      return (<div>Loading...</div>);
     }
 
     return (
@@ -161,7 +159,7 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-// map action for fetching and deleting a post, and getting comments to props
+// map all post related actions needed to props
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     getSinglePost,

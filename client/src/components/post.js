@@ -12,7 +12,7 @@ class Post extends Component {
     this.props.getComments(this.props.post.id);
   }
 
-  // show modal
+  // show delete modal
   showDeleteModal() {
     let modal = this.refs.deleteModal.modalTarget;
     if(modal.style.display !== 'block') {
@@ -20,7 +20,7 @@ class Post extends Component {
     }
   }
 
-  // hide modal
+  // hide delete modal
   hideDeleteModal() {
     let modal = this.refs.deleteModal.modalTarget;
     if(modal.style.display !== 'none') {
@@ -114,7 +114,7 @@ function mapStateToProps({ comments }, ownProps) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     deletePost,
-    getComments, 
+    getComments,
     upVotePost,
     downVotePost
   }, dispatch);

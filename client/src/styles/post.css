@@ -24,9 +24,8 @@
   cursor: pointer;
 }
 
-.post-header h2:hover,
 .post-header h3:hover {
-  text-shadow: 0 0 3px yellow;
+  text-shadow: 0 0 5px #1194f4;
 }
 
 .main-link-to-post {
@@ -54,7 +53,7 @@
 }
 
 .post-header-controlls i:hover {
-  text-shadow: 0 0 7px yellow;
+  text-shadow: 0 0 7px #1194f4;
 }
 
 /* post body */

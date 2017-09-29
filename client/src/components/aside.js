@@ -6,7 +6,7 @@ import '../styles/aside.css';
 // render page controlls and categories
 const Aside = () => {
   return (
-    <div className="aside col-md-4 push-md-8">
+    <div className="aside col-md-4">
       <Controlls />
       <Categories />
     </div>

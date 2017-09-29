@@ -13,22 +13,6 @@ class Comment extends Component {
     return require(`../images/user_${ randNum }.jpg`);
   }
 
-  // show delete modal
-  showDeleteModal() {
-    let modal = this.refs.deleteModal.modalTarget;
-    if(modal.style.display !== 'block') {
-      modal.style.display = 'block';
-    }
-  }
-
-  // hide delete modal
-  hideDeleteModal() {
-    let modal = this.refs.deleteModal.modalTarget;
-    if(modal.style.display !== 'none') {
-      modal.style.display = 'none';
-    }
-  }
-
   // show edit modal
   showEditModal() {
     let modal = this.refs.editModal.modalTarget;
@@ -40,6 +24,22 @@ class Comment extends Component {
   // hide edit modal
   hideEditModal() {
     let modal = this.refs.editModal.modalTarget;
+    if(modal.style.display !== 'none') {
+      modal.style.display = 'none';
+    }
+  }
+
+  // show delete modal
+  showDeleteModal() {
+    let modal = this.refs.deleteModal.modalTarget;
+    if(modal.style.display !== 'block') {
+      modal.style.display = 'block';
+    }
+  }
+
+  // hide delete modal
+  hideDeleteModal() {
+    let modal = this.refs.deleteModal.modalTarget;
     if(modal.style.display !== 'none') {
       modal.style.display = 'none';
     }
@@ -59,6 +59,15 @@ class Comment extends Component {
       <div className="comment">
 
         <Modal
+          ref="editModal"
+          header="Edit Comment">
+          <EditCommentForm
+            body={comment.body}
+            id={comment.id}
+            hideModal={this.hideEditModal.bind(this)} />
+        </Modal>
+
+        <Modal
           ref="deleteModal"
           header="Delete Comment">
           <h4 className="warning">Are you sure you want to delete this comment?</h4>
@@ -69,12 +78,6 @@ class Comment extends Component {
             className="delete-btn"
             onClick={() => this.deleteComment(comment.id, this.props.deleteComment, this.refs.deleteModal)}>Delete</button>
           <div className="clearfix"></div>
-        </Modal>
-
-        <Modal
-          ref="editModal"
-          header="Edit Comment">
-          <EditCommentForm body={comment.body} id={comment.id} />
         </Modal>
 
         <div className="comment-header">
