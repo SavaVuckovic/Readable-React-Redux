@@ -19,6 +19,7 @@ export {
 export {
   GET_COMMENTS,
   ADD_COMMENT,
+  EDIT_COMMENT,
   DELETE_COMMENT,
   UPVOTE_COMMENT,
   DOWNVOTE_COMMENT
@@ -45,6 +46,7 @@ export {
 export {
   getComments,
   addComment,
+  editComment,
   deleteComment,
   upVoteComment,
   downVoteComment

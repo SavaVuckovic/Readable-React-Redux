@@ -1,5 +1,6 @@
 export const GET_COMMENTS = 'GET_COMMENTS';
 export const ADD_COMMENT = 'ADD_COMMENT';
+export const EDIT_COMMENT = 'EDIT_COMMENT';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const UPVOTE_COMMENT = 'UPVOTE_COMMENT';
 export const DOWNVOTE_COMMENT = 'DOWNVOTE_COMMENT';
@@ -65,6 +66,36 @@ export function addComment(author, body, postID) {
       .then((data) => {
         dispatch({
           type: ADD_COMMENT,
+          payload: data
+        });
+      });
+  };
+}
+
+// edit comment
+export function editComment(id, body) {
+  const myHeaders = new Headers({
+    'Content-Type': 'application/json',
+    'Authorization': 'Something Random'
+  });
+
+  const commentObj = {
+    timestamp: Date.now(),
+    body
+  };
+
+  let request = fetch(`${ROOT_URL}/comments/${id}`, {
+    headers: myHeaders,
+    method: 'PUT',
+    body: JSON.stringify(commentObj)
+  });
+
+  return (dispatch) => {
+    request
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch({
+          type: EDIT_COMMENT,
           payload: data
         });
       });

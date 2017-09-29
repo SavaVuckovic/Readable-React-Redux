@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import Modal from './modal';
+import EditCommentForm from './editcommentform';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { deleteComment, upVoteComment, downVoteComment } from '../actions';
@@ -23,6 +24,22 @@ class Comment extends Component {
   // hide delete modal
   hideDeleteModal() {
     let modal = this.refs.deleteModal.modalTarget;
+    if(modal.style.display !== 'none') {
+      modal.style.display = 'none';
+    }
+  }
+
+  // show edit modal
+  showEditModal() {
+    let modal = this.refs.editModal.modalTarget;
+    if(modal.style.display !== 'block') {
+      modal.style.display = 'block';
+    }
+  }
+
+  // hide edit modal
+  hideEditModal() {
+    let modal = this.refs.editModal.modalTarget;
     if(modal.style.display !== 'none') {
       modal.style.display = 'none';
     }
@@ -54,9 +71,15 @@ class Comment extends Component {
           <div className="clearfix"></div>
         </Modal>
 
+        <Modal
+          ref="editModal"
+          header="Edit Comment">
+          <EditCommentForm body={comment.body} id={comment.id} />
+        </Modal>
+
         <div className="comment-header">
           <div className="comment-header-controlls">
-            <i className="fa fa-pencil" aria-hidden="true"></i>
+            <i className="fa fa-pencil" aria-hidden="true" onClick={this.showEditModal.bind(this)}></i>
             <i className="fa fa-trash" aria-hidden="true" onClick={this.showDeleteModal.bind(this)}></i>
           </div>
           <div className="comment-img">
