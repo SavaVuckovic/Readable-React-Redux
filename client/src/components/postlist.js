@@ -4,6 +4,8 @@ import '../styles/post.css';
 import { getAllPosts, getCategoryPosts } from '../actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+// test
+import { createSelector } from 'reselect';
 
 class PostList extends Component {
   // fetch posts from api server
@@ -28,7 +30,23 @@ class PostList extends Component {
       case null:
         return;
       default:
-        let posts = this.props.posts.map((post) => {
+        // sort posts
+        var sortedPosts = (posts, sortBy) => {
+          if(sortBy === 'timestamp') {
+            var sortedByTime = posts.sort((a, b) => {
+              return b.timestamp - a.timestamp;
+            });
+            return sortedByTime;
+          } else if (sortBy === 'votes') {
+            var sortedByVotes = posts.sort((a, b) => {
+              return b.voteScore - a.voteScore;
+            });
+            return sortedByVotes;
+          }
+        }
+
+
+        let posts = sortedPosts(this.props.posts, this.props.sortBy).map((post) => {
           return (<Post key={post.id} post={post} />);
         });
         return posts;
@@ -38,7 +56,7 @@ class PostList extends Component {
   // render posts
   render() {
     return (
-      <div className="postlist col-md-8 pull-md-4">
+      <div className="postlist col-md-8">
         {this.renderPostList()}
       </div>
     );
@@ -46,8 +64,8 @@ class PostList extends Component {
 }
 
 // map posts from api server to props
-function mapStateToProps({ posts }) {
-  return { posts };
+function mapStateToProps({ posts, sortBy }) {
+  return { posts, sortBy };
 }
 
 // map actions for fetching posts to props

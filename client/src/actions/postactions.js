@@ -1,3 +1,5 @@
+export const SORT_POSTS_BY_TIMESTAMP = 'SORT_POSTS_BY_TIMESTAMP';
+export const SORT_POSTS_BY_VOTES = 'SORT_POSTS_BY_VOTES';
 export const GET_ALL_POSTS = 'GET_ALL_POSTS';
 export const GET_CATEGORY_POSTS = 'GET_CATEGORY_POSTS';
 export const GET_SINGLE_POST = 'GET_SINGLE_POST';
@@ -24,6 +26,15 @@ function guid() {
   return s4() + s4() + s4() + s4() + s4();
 }
 
+// sort posts by timestamp
+export function sortPostsByTime() {
+  return { type: SORT_POSTS_BY_TIMESTAMP };
+}
+
+// sort posts by timestamp
+export function sortPostsByVotes() {
+  return { type: SORT_POSTS_BY_VOTES };
+}
 
 // fetch posts from the server
 export function getAllPosts() {

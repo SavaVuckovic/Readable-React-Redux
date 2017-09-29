@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { sortPostsByTime, sortPostsByVotes } from '../actions';
 
 class Controlls extends Component {
+  // decide how to sort posts
+  sortBy(criteria) {
+    if(criteria === 'timestamp') {
+      this.props.sortPostsByTime();
+    } else if (criteria === 'votes') {
+      this.props.sortPostsByVotes();
+    }
+  }
+
   // render link for adding new post and controlls for sorting
   render() {
     return (
@@ -13,9 +24,9 @@ class Controlls extends Component {
         </Link>
 
         <h4>Sort by:</h4>
-        <select>
-          <option>Most votes</option>
-          <option>Most recent</option>
+        <select defaultValue={'votes'} onChange={(e) => this.sortBy(e.target.value)}>
+          <option value='timestamp'>Most recent</option>
+          <option value='votes'>Most votes</option>
         </select>
 
       </div>
@@ -23,13 +34,9 @@ class Controlls extends Component {
   }
 }
 
-// might need this later /////////////////
-function mapStateToProps(state) {
-  // fake data
-  return {
-    ex: state.ex,
-    testt: state.testt
-  }
+// map sorting actions to props
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ sortPostsByTime, sortPostsByVotes }, dispatch);
 }
 
-export default connect(mapStateToProps)(Controlls);
+export default connect(null, mapDispatchToProps)(Controlls);

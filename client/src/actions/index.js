@@ -3,6 +3,8 @@ export { GET_CATEGORIES } from './categoryactions';
 
 // export post action types
 export {
+  SORT_POSTS_BY_TIMESTAMP,
+  SORT_POSTS_BY_VOTES,
   GET_ALL_POSTS,
   GET_CATEGORY_POSTS,
   GET_SINGLE_POST,
@@ -26,6 +28,8 @@ export { getCategories} from './categoryactions';
 
 // export post actions
 export {
+  sortPostsByTime,
+  sortPostsByVotes,
   addPost,
   getAllPosts,
   getCategoryPosts,

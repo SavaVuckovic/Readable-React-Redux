@@ -23,7 +23,7 @@ export function commentsReducer(state = [], action) {
             newComments.push(action.payload[i]);
           }
         }
-        // rerurn old state and new comments if any
+        // return old state and new comments if any
         return [ ...state, ...newComments ]
       }
     case ADD_COMMENT:
