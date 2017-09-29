@@ -2,20 +2,17 @@ import React, { Component } from 'react';
 import '../styles/forms.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getCategories, getSinglePost } from '../actions';
+import { getSinglePost, editPost } from '../actions';
 import { withRouter } from 'react-router-dom';
 
 class EditPostForm extends Component {
   // get categories, active post
   componentWillMount() {
     this.props.getSinglePost(this.props.location.hash.substr(1));
-    this.props.getCategories();
 
     this.state = {
       title: '',
-      body: '',
-      author: '',
-      category: ''
+      body: ''
     };
   }
 
@@ -24,9 +21,7 @@ class EditPostForm extends Component {
     if(this.props.post !== prevProps.post) {
       this.setState({
         title: this.props.post.title,
-        body: this.props.post.body,
-        author: this.props.post.author,
-        category: this.props.post.category
+        body: this.props.post.body
       });
     }
   }
@@ -34,7 +29,8 @@ class EditPostForm extends Component {
   // edit post on form submit
   handleSubmit(e) {
     e.preventDefault();
-    // ...
+    this.props.editPost(this.props.post.id, this.state.title, this.state.body);
+    this.props.history.push('/');
   }
 
   // renders <option> tag for each category
@@ -65,16 +61,6 @@ class EditPostForm extends Component {
           type="text"
           value={this.state.title}
           onChange={(e) => this.setState({ title: e.target.value })} />
-        <input
-          type="text"
-          value={this.state.author}
-          onChange={(e) => this.setState({ author: e.target.value })} />
-        <select
-          value={this.state.category}
-          onChange={(e) => this.setState({ category: e.target.value })}>
-          <option>Select category</option>
-          {this.renderCategoryOptions()}
-        </select>
         <textarea
           value={this.state.body}
           onChange={(e) => this.setState({ body: e.target.value })}></textarea>
@@ -85,16 +71,13 @@ class EditPostForm extends Component {
 }
 
 // map categories and active post to props
-function mapStateToProps(state) {
-  return {
-    categories: state.categories,
-    post: state.activePost
-  };
+function mapStateToProps({ activePost }) {
+  return { post: activePost };
 }
 
 // map actions for fetching categories, single post and editing a post to props
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getCategories, getSinglePost }, dispatch);
+  return bindActionCreators({ getSinglePost, editPost }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(EditPostForm));

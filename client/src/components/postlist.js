@@ -4,8 +4,6 @@ import '../styles/post.css';
 import { getAllPosts, getCategoryPosts } from '../actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-// test
-import { createSelector } from 'reselect';
 
 class PostList extends Component {
   // fetch posts from api server

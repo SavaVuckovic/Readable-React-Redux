@@ -9,6 +9,7 @@ export {
   GET_CATEGORY_POSTS,
   GET_SINGLE_POST,
   ADD_POST,
+  EDIT_POST,
   DELETE_POST,
   UPVOTE_POST,
   DOWNVOTE_POST
@@ -31,6 +32,7 @@ export {
   sortPostsByTime,
   sortPostsByVotes,
   addPost,
+  editPost,
   getAllPosts,
   getCategoryPosts,
   getSinglePost,

@@ -4,6 +4,7 @@ export const GET_ALL_POSTS = 'GET_ALL_POSTS';
 export const GET_CATEGORY_POSTS = 'GET_CATEGORY_POSTS';
 export const GET_SINGLE_POST = 'GET_SINGLE_POST';
 export const ADD_POST = 'ADD_POST';
+export const EDIT_POST = 'EDIT_POST';
 export const DELETE_POST = 'DELETE_POST';
 export const UPVOTE_POST = 'UPVOTE_POST';
 export const DOWNVOTE_POST = 'DOWNVOTE_POST';
@@ -132,6 +133,36 @@ export function deletePost(id) {
         dispatch({
           type: DELETE_POST,
           payload: id
+        });
+      });
+  };
+}
+
+// edit post
+export function editPost(id, title, body) {
+  const myHeaders = new Headers({
+    'Content-Type': 'application/json',
+    'Authorization': 'Something Random'
+  });
+
+  const postObj = {
+    title,
+    body
+  };
+
+  let request = fetch(`${ROOT_URL}/posts/${id}`, {
+    headers: myHeaders,
+    method: 'PUT',
+    body: JSON.stringify(postObj)
+  });
+
+  return (dispatch) => {
+    request
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch({
+          type: EDIT_POST,
+          payload: data
         });
       });
   };
