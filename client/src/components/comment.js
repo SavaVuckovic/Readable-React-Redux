@@ -118,7 +118,7 @@ class Comment extends Component {
   }
 }
 
-// map edit and delete comment actions to props
+// map comment actions to props
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ deleteComment, upVoteComment, downVoteComment }, dispatch);
 }

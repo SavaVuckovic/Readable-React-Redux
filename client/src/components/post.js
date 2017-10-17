@@ -110,7 +110,7 @@ function mapStateToProps({ comments }, ownProps) {
   return { comments: thisPostComments };
 }
 
-// map delete post action to props
+// map post and comments actions to props
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     deletePost,

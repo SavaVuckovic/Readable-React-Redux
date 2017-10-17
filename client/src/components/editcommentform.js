@@ -32,6 +32,7 @@ class EditCommentForm extends Component {
   }
 }
 
+// map action for editing comments to props
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ editComment }, dispatch);
 }
